@@ -1,0 +1,9 @@
+MonkTouch version 2.0
+Built with Sencha Touch 1.1
+by Adam Randlett - adam@mokdevelopment.com
+
+
+MonkTouch is a mobile application developed for the Ekklesia360 CMS.  http://www.ekklesia360.com
+
+SETUP
+The setup.js file located in the 'app' folder is the file to add application tabs and asign the module to populate that content pane along with the content layout templates.
