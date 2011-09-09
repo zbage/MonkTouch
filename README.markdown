@@ -71,7 +71,28 @@ The setup.js file located in the 'app' folder is the file to add application tab
 | Image                 | {image}       | Image of list record                                                             |
 | Url                   | {url}         | List item url                                                                    |
 | Text                  | {text}        | Content from description field                                                   |
-| Slug                  | {slug}        | Slug format of link name (link-name-slug)                                        |
+| Slug                  | {slug}        | Slug format of link name (link-name-slug)                                        |   
+
+
+### Redirect Code 
+> This code should be placed in the header of the websites index.php file. To see the home welcome panel the redirect location must go to "/mobile/#Welcome", otherwise it will not show feature sermon or what ever was added to feature layout template html.
+<<script>
+//window.console.log(navigator.userAgent);
+if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/android/i)) || (navigator.userAgent.match(/Palm/i))) {
+if (typeof(localStorage) != 'undefined' ) {
+	try {
+	    if(localStorage.getItem("redirectmobile") != "off"){
+	        window.location = "/mobile/#Welcome";
+	    }
+	    localStorage.setItem("redirectmobile","");  
+	} catch (e) {
+		if (e == QUOTA_EXCEEDED_ERR) {
+			//window.console.log("Quota Exceeded");
+		}   
+	}   
+}
+}
+</script>>
 
 
 
