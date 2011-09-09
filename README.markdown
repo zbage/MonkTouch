@@ -76,7 +76,7 @@ The setup.js file located in the 'app' folder is the file to add application tab
 
 ### Redirect Code 
 > This code should be placed in the header of the websites index.php file. To see the home welcome panel the redirect location must go to "/mobile/#Welcome", otherwise it will not show feature sermon or what ever was added to feature layout template html.
-<<script>
+<pre><code><script>
 //window.console.log(navigator.userAgent);
 if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/android/i)) || (navigator.userAgent.match(/Palm/i))) {
 if (typeof(localStorage) != 'undefined' ) {
@@ -92,7 +92,7 @@ if (typeof(localStorage) != 'undefined' ) {
 	}   
 }
 }
-</script>>
+</script></code></pre>
 
 
 
