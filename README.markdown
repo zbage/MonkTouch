@@ -78,7 +78,18 @@ The /app/__setup.js__ file determines application tabs and Ekklesia360 modules t
 > The feature is the initial welcome screen upon load of the application.  The default content pulls from the sermons module. If a different module is requested the /app/views/defaults/Welcome.js file will need to be updated to pull from a different model. The model pulls data from specific Ekklesia360 module.  *Please keep the 'moretabinfo' div for explanation of tab bar swipe action.*
 
 #### Default Code
-        <div class="latest"><div class="media-wrap"><div  id="playmedia" data-url="{audio}" class="listen"><img src="/mobile/public/resources/images/play_btn.png"/></div><img src="{image}" class="latest-image" width="320" height="150" /></div><h6>Latest Message <time>{date}</time></h6><h3>{title}</h3><p class="preview">{preview}</p></div><div id="moretabinfo">SWIPE TABBAR TO SEEM MORE</div>
+        <div class="latest">
+            <div class="media-wrap">
+                <div  id="playmedia" data-url="{audio}" class="listen">
+                <img src="/mobile/public/resources/images/play_btn.png"/>
+                </div>
+                <img src="{image}" class="latest-image" width="320" height="150" />
+            </div>
+            <h6>Latest Message <time>{date}</time></h6>
+            <h3>{title}</h3>
+            <p class="preview">{preview}</p>
+        </div>
+        <div id="moretabinfo">SWIPE TABBAR TO SEEM MORE</div>
 
 
 
