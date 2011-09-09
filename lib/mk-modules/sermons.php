@@ -40,6 +40,8 @@ $string = getContent(
 		"show:__videoembed__",
 		"show:||",
 		"show:__imageurl2 width='50' height='50'__",
+		"show:||",
+		"show:__text__",
 		"show:~~",
 		"noecho"
 	); 
@@ -74,12 +76,13 @@ $string = getContent(
 		    preview => $value[2],
 		    author => $value[3],
 		    date => $value[4],
-		    text => $value[5],
+		    summary => $value[5],
 		    slug => $value[6],
 		    audio => $value[7],
 		    video => $value[8],
 		    embed => $value[9], 
-		    thmb => $value[10]
+		    thmb => $value[10],
+		    text => $value[11]
 		    );
 		    $i++;
 	}

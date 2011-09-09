@@ -22,7 +22,8 @@ The /app/__setup.js__ file determines application tabs and Ekklesia360 modules t
 | Preview               | {preview}     | Preview of sermon/article text (200 characters)                                  |
 | Author                | {author}      | Author name of sermon/article                                                    |
 | Date                  | {date}        | Date of sermon/article in format (Jan 01 2011)                                   |
-| Text                  | {text}        | Summary field of sermon - Article's full content text                            |
+| Text                  | {text}        | Full Content Text                                                                |
+| Summary               | {summary}     | Content from summary field                                                       |
 | Slug                  | {slug}        | Slug format of sermon/article name (sermon-name-slug)                            |
 | Audio                 | {audio}       | Audio url of sermon/article                                                      |
 | Video                 | {video}       | Video url of sermon/article                                                      |
