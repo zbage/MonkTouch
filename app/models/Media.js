@@ -7,11 +7,15 @@ Ext.regModel("Media", {
     fields: [
         {name: "title", type: "string"},
         {name: "text", type: "string"},
+        {name: "summary", type: "string"},
+        {name: "preview", type: "string"},
         {name: "date", type: "string"},
 		{name: "audio", type: "string"},
 		{name: "video", type: "string"},
+		{name: "embed", type: "string"},
 		{name: "image", type: "string"},
-		{name: "thmb", type: "string"}
+		{name: "thmb", type: "string"},
+		
     ],
     
      proxy:{
