@@ -6,11 +6,11 @@ by Adam Randlett - adam@mokdevelopment.com
 MonkTouch is a mobile application developed for the Ekklesia360 CMS.  http://www.ekklesia360.com
 
 ## SETUP 
+The /app/__setup.js__ file determines application tabs and Ekklesia360 modules to populate the content pane along with the content layout html. Below will explain the api tags available as well as tag object structure.  
 
-The setup.js file located in the 'app' folder is the file to add application tabs and asign the module to populate that content pane along with the content layout templates. 
 
 ### MonkMobile.templates
->These templates are the html with api reference to use in the display panels. HTML is allowed and is pre-styled.  
+>These templates are the html with Ekklesia360 api reference to use in the display panels. HTML is allowed and is pre-styled.  
 
 ### Module Variables 
 #### Sermons/Articles
@@ -71,11 +71,24 @@ The setup.js file located in the 'app' folder is the file to add application tab
 | Image                 | {image}       | Image of list record                                                             |
 | Url                   | {url}         | List item url                                                                    |
 | Text                  | {text}        | Content from description field                                                   |
-| Slug                  | {slug}        | Slug format of link name (link-name-slug)                                        |   
+| Slug                  | {slug}        | Slug format of link name (link-name-slug)                                        | 
 
 
-### Redirect Code 
+### MonkMobile.feature
+> The feature is the initial welcome screen upon load of the application.  The default content pulls from the sermons module. If a different module is requested the /app/views/defaults/Welcome.js file will need to be updated to pull from a different model. The model pulls data from specific Ekklesia360 module.  *Please keep the 'moretabinfo' div for explanation of tab bar swipe action.*
+
+#### Default Code
+<pre>
+    <code>
+        <div class="latest"><div class="media-wrap"><div  id="playmedia" data-url="{audio}" class="listen"><img src="/mobile/public/resources/images/play_btn.png"/></div><img src="{image}" class="latest-image" width="320" height="150" /></div><h6>Latest Message <time>{date}</time></h6><h3>{title}</h3><p class="preview">{preview}</p></div><div id="moretabinfo">SWIPE TABBAR TO SEEM MORE</div>
+    </code>
+</pre>
+
+
+
+## Redirect Code 
 > This code should be placed in the header of the websites index.php file. To see the home welcome panel the redirect location must go to "/mobile/#Welcome", otherwise it will not show feature sermon or what ever was added to feature layout template html.
+
 <pre><code><script>
 //window.console.log(navigator.userAgent);
 if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/android/i)) || (navigator.userAgent.match(/Palm/i))) {
