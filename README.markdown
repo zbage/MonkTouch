@@ -15,19 +15,19 @@ The setup.js file located in the 'app' folder is the file to add application tab
 ### Module Variables 
 #### Sermons/Articles
 
-| __Name__   | __Usage__     | __Description__                                                                  |
-| ---------- | ------------- | ---------------------------------------------------------------------            |
-| Title      | {title}       | Title of sermon/article record                                                   |
-| Image      | {image}       | Image of sermon/article record                                                   |
-| Preview    | {preview}     | Preview of sermon/article text (200 characters)                                  |
-| Author     | {author}      | Author name of sermon/article                                                    |
-| Date       | {date}        | Date of sermon/article in format (Jan 01 2011)                                   |
-| Text       | {text}        | Summary field of sermon - Article's full content text                            |
-| Slug       | {slug}        | Slug format of sermon/article name (sermon-name-slug)                            |
-| Audio      | {audio}       | Audio url of sermon/article                                                      |
-| Video      | {video}       | Video url of sermon/article                                                      |
-| Embed      | {embed}       | Embed code of sermon/article (Vimeo or Youtube) *must use iframe embed code      |
-| Thumb      | {thmb}        | Thumbnail image of sermon/article (size 50 x 50)                                 | 
+| __Name__              | __Usage__     | __Description__                                                                  |
+| --------------------- | ------------- | -------------------------------------------------------------------------------- |
+| Title                 | {title}       | Title of sermon/article record                                                   |
+| Image                 | {image}       | Image of sermon/article record                                                   |
+| Preview               | {preview}     | Preview of sermon/article text (200 characters)                                  |
+| Author                | {author}      | Author name of sermon/article                                                    |
+| Date                  | {date}        | Date of sermon/article in format (Jan 01 2011)                                   |
+| Text                  | {text}        | Summary field of sermon - Article's full content text                            |
+| Slug                  | {slug}        | Slug format of sermon/article name (sermon-name-slug)                            |
+| Audio                 | {audio}       | Audio url of sermon/article                                                      |
+| Video                 | {video}       | Video url of sermon/article                                                      |
+| Embed                 | {embed}       | Embed code of sermon/article (Vimeo or Youtube) *must use iframe embed code      |
+| Thumb                 | {thmb}        | Thumbnail image of sermon/article (size 50 x 50)                                 | 
 
 #### Events
 
@@ -48,7 +48,31 @@ The setup.js file located in the 'app' folder is the file to add application tab
 | Location Name         | {locname}     | Location name of the event                                                       |
 | Location Address      | {address}     | Location Address of the event                                                    |
 | Google Map            | {googlemap}   | Google map of location                                                           | 
-| Slug                  | {slug}        | Slug format of sermon name (sermon-name-slug)                                    |
+| Slug                  | {slug}        | Slug format of sermon name (event-name-slug)                                     | 
+
+#### Blogs
+
+| __Name__              | __Usage__     | __Description__                                                                  |
+| --------------------- | ------------- | -------------------------------------------------------------------------------- |
+| Title                 | {title}       | Title of blog record                                                             |
+| Image                 | {image}       | Image of blog record                                                             |
+| Preview               | {preview}     | Preview of blog text (200 characters)                                            |
+| Summary               | {summary}     | Summary of blog (200 characters)                                                 |
+| Author                | {author}      | Author name of blog                                                              |
+| Date                  | {date}        | Date of bloge in format (Jan 01 2011)                                            |
+| Text                  | {text}        | Blog full text                                                                   |
+| Slug                  | {slug}        | Slug format of blog name (blog-name-slug)                                        | 
+
+#### Link List
+
+| __Name__              | __Usage__     | __Description__                                                                  |
+| --------------------- | ------------- | -------------------------------------------------------------------------------- |
+| Title                 | {title}       | Title of list record                                                             |
+| Image                 | {image}       | Image of list record                                                             |
+| Url                   | {url}         | List item url                                                                    |
+| Text                  | {text}        | Content from description field                                                   |
+| Slug                  | {slug}        | Slug format of link name (link-name-slug)                                        |
+
 
 
 

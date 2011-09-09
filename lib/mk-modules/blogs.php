@@ -25,7 +25,7 @@ $string = getContent(
 		"show_postlist:||",
 		"show_postlist:__blogsummary__",
 		"show_postlist:||",
-		"show_postlist:__preview limit='100'__",
+		"show_postlist:__preview limit='200'__",
 		"show_postlist:||",
 		"show_postlist:__blogauthor__",
 		"show_postlist:||",
