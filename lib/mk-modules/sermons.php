@@ -23,7 +23,7 @@ $string = getContent(
 		"show:||",
 		"show:__imageurl width='320' height='150'__",
 		"show:||",
-		"show:__preview limit='100'__",
+		"show:__preview limit='200'__",
 		"show:||",
 		"show:__preacher__",
 		"show:||",
@@ -36,6 +36,8 @@ $string = getContent(
 		"show:__audiourl__",
 		"show:||",
 		"show:__videourl__",
+		"show:||",
+		"show:__videoembed__",
 		"show:||",
 		"show:__imageurl2 width='50' height='50'__",
 		"show:~~",
@@ -76,7 +78,8 @@ $string = getContent(
 		    slug => $value[6],
 		    audio => $value[7],
 		    video => $value[8],
-		    thmb => $value[9]
+		    embed => $value[9], 
+		    thmb => $value[10]
 		    );
 		    $i++;
 	}

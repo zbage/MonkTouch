@@ -24,7 +24,7 @@ $string = getContent(
 		"show:||",
 		"show:__image__",
 		"show:||",
-		"show:__preview limit='100'__",
+		"show:__preview limit='200'__",
 		"show:||",
 		"show:__author__",
 		"show:||",
@@ -33,6 +33,14 @@ $string = getContent(
 		"show:__text__",
 		"show:||",
 		"show:__slug__",
+		"show:||",
+		"show:__audiourl__",
+		"show:||",
+		"show:__videourl__",
+		"show:||",
+		"show:__videoembed__",
+		"show:||",
+		"show:__imageurl2 width='50' height='50'__",
 		"show:~~",
 		"noecho"
 	); 
@@ -54,7 +62,11 @@ $string = getContent(
 		    author => $value[3],
 		    date => $value[4],
 		    text => $value[5],
-		    slug => $value[6]
+		    slug => $value[6],
+		    audio => $value[7],
+		    video => $value[8],
+		    embed => $value[9], 
+		    thmb => $value[10]
 		    );
 		    $i++;
 	}

@@ -19,7 +19,7 @@ $string = getContent(
 		"show:||",
 		"show:__image__",
 		"show:||",
-		"show:__preview limit='100'__",
+		"show:__preview limit='200'__",
 		"show:||",
 	    "show:__description__",
     	"show:||",
