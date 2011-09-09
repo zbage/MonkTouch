@@ -73,6 +73,7 @@ The /app/__setup.js__ file determines application tabs and Ekklesia360 modules t
 | Text                  | {text}        | Content from description field                                                   |
 | Slug                  | {slug}        | Slug format of link name (link-name-slug)                                        | 
 
+ 
 
 ### MonkMobile.feature
 > The feature is the initial welcome screen upon load of the application.  The default content pulls from the sermons module. If a different module is requested the /app/views/defaults/Welcome.js file will need to be updated to pull from a different model. The model pulls data from specific Ekklesia360 module.  *Please keep the 'moretabinfo' div for explanation of tab bar swipe action.*
