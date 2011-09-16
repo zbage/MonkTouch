@@ -9,7 +9,8 @@ Ext.regController("Link", {
     index: function() { 
    		Ext.Msg.confirm("Leaving The App","Are you sure?",function(response){
 				if(response !== "no"){
-				  if(MonkMobile.viewport.dockedItems.map.tabBar.activeTab.text === "home"){
+				  var homename = MonkMobile.viewport.dockedItems.map.tabBar.activeTab.text;
+				  if(homename.toLowerCase() === "home" || homename.toLowerCase() === "full site"){
 				          function setStorage(str,val){  
 	          					if (typeof(localStorage) != 'undefined' ) {
 	          						try { 
@@ -27,7 +28,6 @@ Ext.regController("Link", {
 	          						localStorage.setItem(str,"");
 	          					 }
 	          				}
-	          				
 	          				setStorage("redirectmobile","off");    
 				  }
 				  window.location = MonkMobile.viewport.dockedItems.map.tabBar.activeTab.viewtpl.url;  
