@@ -69,6 +69,19 @@ $string = getContent(
     
     $i = 0;
 	foreach ($outarray as $key => $value) {
+	
+	     preg_match_all('/(src)=("[^"]*")/i',$value[9],$parts);
+	     $type;
+	     $media_id = substr($parts[0][0],5,-1);
+	     $posyt = strpos($parts[0][0],"youtube");
+	     $posvm = strpos($parts[0][0],"vimeo");
+	       //$iframe[0][2][0] gets src value from iframe
+	     if($posyt !==false){
+	         $type = "youtube";
+	     }else if($posvm !==false){
+	         $type = "vimeo";
+	     }
+	     
 	     $nodes[$i] = array(
 	         
 		    title => $value[0],
@@ -80,7 +93,11 @@ $string = getContent(
 		    slug => $value[6],
 		    audio => $value[7],
 		    video => $value[8],
-		    embed => $value[9], 
+		    embed => embed => array(
+		            type => $type,
+		            media_id => $media_id,
+		            code => $value[9]
+		        ), 
 		    thmb => $value[10],
 		    text => $value[11]
 		    );

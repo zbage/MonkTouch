@@ -3,6 +3,7 @@ MonkMobile.templates = {
 	defaultDetail:"<h2>{title}</h2> {text}",
 	eventDetail:"<h2>{title}</h2><h5>{times}</h5> {text}",
 	mediaDetail: "<h2>{title}</h2><h4>{date}</h4><audio src='{audio}' controls /><p>{text}</p>",
+	embedVideoDetail: '<h2>{title}</h2><h4>{date}</h4><tpl if="embedsrc"><div class="videmed" style="width:300;"><iframe frameborder="0" src="{embedsrc}" width="300"></iframe></div></tpl>{text}',
 	mediaList: "{title}",
 	articleList: "{title}",
 	eventList: '<div class="date"><span class="month">{month}</span><span class="day">{day}</span></div> {title}<tpl if="locname" <p class="subline">@ {locname}</p></tpl>',
@@ -71,7 +72,7 @@ MonkMobile.setup = {
             text:         'home',
             controller:   'Link',
 			viewtpl:{
-				url:      'http://www.ekklesia360.com'
+				url:      '/' //can be full url
 			}
         }
 	]
