@@ -29,6 +29,7 @@ The /app/__setup.js__ file determines application tabs and Ekklesia360 modules t
 | Video                 | {video}       | Video url of sermon/article                                                      |
 | Embed                 | {embed}       | Embed code of sermon/article (Vimeo or Youtube) *must use iframe embed code      | 
 | Embed Src             | {embedsrc}    | Embed iframe src url of sermon/article (Vimeo or Youtube) *must use iframe embed code      | 
+| Embed Type            | {embedtype}   | Embed type of sermon/article either (vimeo or youtube) *must use iframe embed code      | 
 | Thumb                 | {thmb}        | Thumbnail image of sermon/article (size 50 x 50)                                 | 
 
 #### Events
