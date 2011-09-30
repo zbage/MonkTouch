@@ -93,7 +93,7 @@ $string = getContent(
 		    slug => $value[6],
 		    audio => $value[7],
 		    video => $value[8],
-		    embed => embed => array(
+		    embed => array(
 		            type => $type,
 		            media_id => $media_id,
 		            code => $value[9]
