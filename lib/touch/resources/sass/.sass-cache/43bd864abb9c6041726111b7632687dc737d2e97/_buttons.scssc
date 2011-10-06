@@ -1,65 +1,65 @@
 3.1.2 (Brainy Betty)
-37c95df3ea1f897451008d9c5e2af7e098a2b05b
+45c7e89d8c901ea85f658b554ef65c284621ad7a
 o:Sass::Tree::RootNode
-:@template"ï%// Toolbar icons used with permission from Drew Wilson
+:@template"}%// Toolbar icons used with permission from Drew Wilson
 // http://pictos.drewwilson.com/
 // Pictos icons are (c) 2010 Drew Wilson
 
 @import '../global';
 
 /**
- * @global {measurement} $button-height Default height for buttons.
+ * @var {measurement} $button-height Default height for buttons.
  *
- * @class Ext.Button
+ * @member Ext.Button
  * @xtype button
  */
 $button-height: 1.8em;
 
 /**
- * @global {measurement} $button-radius Default border-radius for buttons.
+ * @var {measurement} $button-radius Default border-radius for buttons.
  *
- * @class Ext.Button
+ * @member Ext.Button
  * @xtype button
  */
 $button-radius: .4em !default;
 
 /**
- * @global {measurement} $button-stroke-weight Default border width for buttons.
+ * @var {measurement} $button-stroke-weight Default border width for buttons.
  *
- * @class Ext.Button
+ * @member Ext.Button
  * @xtype button
  */
 $button-stroke-weight: .1em !default;
 
 /**
- * @global {string} $button-gradient Default gradient for buttons.
+ * @var {string} $button-gradient Default gradient for buttons.
  *
- * @class Ext.Button
+ * @member Ext.Button
  * @xtype button
  * @see background-gradient
  */
 $button-gradient: $base-gradient !default;
 
 /**
- * @global {string} $toolbar-icon-size Default size (width and height) for toolbar icons.
+ * @var {string} $toolbar-icon-size Default size (width and height) for toolbar icons.
  *
- * @class Ext.Button
+ * @member Ext.Button
  * @xtype button
  */
 $toolbar-icon-size: 1.4em !default;
 
 /**
- * @global {boolean} $include-button-uis Optionally disable separate button UIs, including action, confirm, and decline.
+ * @var {boolean} $include-button-uis Optionally disable separate button UIs, including action, confirm, and decline.
  *
- * @class Ext.Button
+ * @member Ext.Button
  * @xtype button
  */
 $include-button-uis: $include-default-uis !default;
 
 /**
- * @global {boolean} $include-button-uis Optionally disable special CSS3 effects on buttons including gradients, text-shadows, and box-shadows.
+ * @var {boolean} $include-button-uis Optionally disable special CSS3 effects on buttons including gradients, text-shadows, and box-shadows.
  *
- * @class Ext.Button
+ * @member Ext.Button
  * @xtype button
  */
 $include-button-highlights: $include-highlights !default;
@@ -68,7 +68,7 @@ $include-button-highlights: $include-highlights !default;
 /**
  * Includes default button styles.
  *
- * @class Ext.Button
+ * @member Ext.Button
  * @xtype button
  * @see background-gradient
  */
@@ -342,19 +342,18 @@ $include-button-highlights: $include-highlights !default;
  * Creates a theme UI for buttons.
  * Also automatically generates UIs for {ui-label}-round and {ui-label}-small.
  *
+ *     // SCSS
+ *     @include sencha-button-ui('secondary', #99A4AE, 'glossy');
+ *     
+ *     // JS
+ *     var cancelBtn = new Ext.Button({text: 'Cancel', ui: 'secondary'});
+ * 
  * @param {string} $ui-label The name of the UI being created.
  *   Can not included spaces or special punctuation (used in class names)
  * @param {color} $color Base color for the UI.
- * @param {string} [$gradient: $button-gradient] Default gradient for the UI.
+ * @param {string} $gradient Default gradient for the UI.
  *
- * @example
- * // SCSS
- * @include sencha-button-ui('secondary', #99A4AE, 'glossy');
- * 
- * // JS
- * var cancelBtn = new Ext.Button({text: 'Cancel', ui: 'secondary'});
- * 
- * @class Ext.Button
+ * @member Ext.Button
  * @xtype button
  */
 @mixin sencha-button-ui($ui-label, $color, $gradient: $button-gradient) {
@@ -378,66 +377,66 @@ $include-button-highlights: $include-highlights !default;
 @loud0o:Sass::Tree::ImportNode
 ;0;i
 ;@;
-[ :@imported_filename"../globalo;;"y/**
- * @global {measurement} $button-height Default height for buttons.
+[ :@imported_filename"../globalo;;"w/**
+ * @var {measurement} $button-height Default height for buttons.
  *
- * @class Ext.Button
+ * @member Ext.Button
  * @xtype button
  */;i;0;@;[ ;
 [ ;0o:Sass::Tree::VariableNode:
 @expro:Sass::Script::Number;f1.8 ÃÕ;i:@denominator_units[ ;{ :@numerator_units["em:@original"
 1.8em;i:
 @name"button-height;@;
-[ :@guarded0o;;"{/**
- * @global {measurement} $button-radius Default border-radius for buttons.
+[ :@guarded0o;;"~/**
+ * @var {measurement} $button-radius Default border-radius for buttons.
  *
- * @class Ext.Button
+ * @member Ext.Button
  * @xtype button
  */;i;0;@;[ ;
 [ ;0o;;o;;f0.40000000000000002 ôö;i;[ ;{ ;["em;"
 0.4em;i;"button-radius;@;
-[ ;"!defaulto;;"Å/**
- * @global {measurement} $button-stroke-weight Default border width for buttons.
+[ ;"!defaulto;;"/**
+ * @var {measurement} $button-stroke-weight Default border width for buttons.
  *
- * @class Ext.Button
+ * @member Ext.Button
  * @xtype button
  */;i;0;@;[ ;
 [ ;0o;;o;;f0.10000000000000001 ôö;i";[ ;{ ;["em;"
 0.1em;i";"button-stroke-weight;@;
-[ ;"!defaulto;;"è/**
- * @global {string} $button-gradient Default gradient for buttons.
+[ ;"!defaulto;;"ç/**
+ * @var {string} $button-gradient Default gradient for buttons.
  *
- * @class Ext.Button
+ * @member Ext.Button
  * @xtype button
  * @see background-gradient
  */;i$;0;@;[ ;
 [ ;0o;;o:Sass::Script::Variable	;i+;"base-gradient;{ :@underscored_name"base_gradient;i+;"button-gradient;@;
-[ ;"!defaulto;;"ä/**
- * @global {string} $toolbar-icon-size Default size (width and height) for toolbar icons.
+[ ;"!defaulto;;"à/**
+ * @var {string} $toolbar-icon-size Default size (width and height) for toolbar icons.
  *
- * @class Ext.Button
+ * @member Ext.Button
  * @xtype button
  */;i-;0;@;[ ;
 [ ;0o;;o;;f1.3999999999999999 ff;i3;[ ;{ ;["em;"
 1.4em;i3;"toolbar-icon-size;@;
-[ ;"!defaulto;;"©/**
- * @global {boolean} $include-button-uis Optionally disable separate button UIs, including action, confirm, and decline.
+[ ;"!defaulto;;"ß/**
+ * @var {boolean} $include-button-uis Optionally disable separate button UIs, including action, confirm, and decline.
  *
- * @class Ext.Button
+ * @member Ext.Button
  * @xtype button
  */;i5;0;@;[ ;
 [ ;0o;;o;	;i;;"include-default-uis;{ ;"include_default_uis;i;;"include-button-uis;@;
-[ ;"!defaulto;;"¿/**
- * @global {boolean} $include-button-uis Optionally disable special CSS3 effects on buttons including gradients, text-shadows, and box-shadows.
+[ ;"!defaulto;;"æ/**
+ * @var {boolean} $include-button-uis Optionally disable special CSS3 effects on buttons including gradients, text-shadows, and box-shadows.
  *
- * @class Ext.Button
+ * @member Ext.Button
  * @xtype button
  */;i=;0;@;[ ;
 [ ;0o;;o;	;iC;"include-highlights;{ ;"include_highlights;iC;"include-button-highlights;@;
-[ ;"!defaulto;;"t/**
+[ ;"!defaulto;;"u/**
  * Includes default button styles.
  *
- * @class Ext.Button
+ * @member Ext.Button
  * @xtype button
  * @see background-gradient
  */;iF;0;@;[ ;
@@ -753,34 +752,33 @@ trash;iD;;;{ o;
 ;iM;"sencha-button-ui;@;{ ;[ ;[o;	;"decline;iM;;;{ o;
 ;iM;"desaturate;@;;{ ;[o;
 ;iM;"darken;@;;{ ;[o; 	;iM;"alert-color;@;;	"alert_coloro;;i;iM;[ ;@;;["%;"10%o;;i
-;iM;[ ;@;;["%;"5%;'[ o;;"X/**
+;iM;[ ;@;;["%;"5%;'[ o;;"M/**
  * Creates a theme UI for buttons.
  * Also automatically generates UIs for {ui-label}-round and {ui-label}-small.
  *
+ *     // SCSS
+ *     @include sencha-button-ui('secondary', #99A4AE, 'glossy');
+ *     
+ *     // JS
+ *     var cancelBtn = new Ext.Button({text: 'Cancel', ui: 'secondary'});
+ * 
  * @param {string} $ui-label The name of the UI being created.
  *   Can not included spaces or special punctuation (used in class names)
  * @param {color} $color Base color for the UI.
- * @param {string} [$gradient: $button-gradient] Default gradient for the UI.
+ * @param {string} $gradient Default gradient for the UI.
  *
- * @example
- * // SCSS
- * @include sencha-button-ui('secondary', #99A4AE, 'glossy');
- * 
- * // JS
- * var cancelBtn = new Ext.Button({text: 'Cancel', ui: 'secondary'});
- * 
- * @class Ext.Button
+ * @member Ext.Button
  * @xtype button
  */;iR;0;@;[ ;
-[ ;0o;;ie;"sencha-button-ui;@;	T;
-[o;;if;@;	T;
-[o;%;ig;"toolbar-button;@;&{ ;
-[ ;'[o;	;ig;"
+[ ;0o;;id;"sencha-button-ui;@;	T;
+[o;;ie;@;	T;
+[o;%;if;"toolbar-button;@;&{ ;
+[ ;'[o;	;if;"
 color;{ ;"
-coloro;	;ig;"gradient;@';"gradient;5i ;9[".x-button.x-button-o;	;if;"ui-label;{ ;"ui_label", .x-button.x-button-o;	;if;"ui-label;{ ;"ui_label" -round, .x-button.x-button-o;	;if;"ui-label;{ ;"ui_label"-smallo;;ij;@;	T;
-[o;O	;ik;@;
-[ ;N["."x-button-round;5i ;9[".x-button.x-button-o;	;ij;"ui-label;{ ;"ui_label"-roundo;;in;@;	T;
-[o;O	;io;@;
-[ ;N["."x-button-small;5i ;9[".x-button.x-button-o;	;in;"ui-label;{ ;"ui_label"-small;'[[o;;"ui-label;{ ;"ui_label0[o;;"
+coloro;	;if;"gradient;@';"gradient;5i ;9[".x-button.x-button-o;	;ie;"ui-label;{ ;"ui_label", .x-button.x-button-o;	;ie;"ui-label;{ ;"ui_label" -round, .x-button.x-button-o;	;ie;"ui-label;{ ;"ui_label"-smallo;;ii;@;	T;
+[o;O	;ij;@;
+[ ;N["."x-button-round;5i ;9[".x-button.x-button-o;	;ii;"ui-label;{ ;"ui_label"-roundo;;im;@;	T;
+[o;O	;in;@;
+[ ;N["."x-button-small;5i ;9[".x-button.x-button-o;	;im;"ui-label;{ ;"ui_label"-small;'[[o;;"ui-label;{ ;"ui_label0[o;;"
 color;@];"
-color0[o;;"gradient;@];"gradiento;	;ie;"button-gradient;@];"button_gradient
+color0[o;;"gradient;@];"gradiento;	;id;"button-gradient;@];"button_gradient

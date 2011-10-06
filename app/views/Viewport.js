@@ -6,9 +6,11 @@
  * generated correctly.
  */        
 
-MonkMobile.Viewport = Ext.extend(Ext.Panel, {
+MonkMobile.Viewport = Ext.extend(Ext.TabPanel, {
     id : 'viewport',
     layout:'card',
+    tabBarDock:'bottom',
+    cardSwitchAnimation:false,
 	scroll:false,
     fullscreen:true,
 	initComponent: function(){ 

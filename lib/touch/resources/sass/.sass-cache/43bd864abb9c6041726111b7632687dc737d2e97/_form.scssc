@@ -1,113 +1,113 @@
 3.1.2 (Brainy Betty)
-d380e862967e73932453f1ae7e0723b073f4edff
+ece26e54b5ed652efbe39d557c85bc0f92f7d911
 o:Sass::Tree::RootNode
-:@template"|-@import '../global';
+:@template"˝,@import '../global';
 @import 'form-sliders';
 
 /**
- * @global {color} [$form-bg-color=#eee]
+ * @var {color} $form-bg-color
  * Default background-color for forms.
  *
- * @class Ext.form.FormPanel
+ * @member Ext.form.FormPanel
  * @xtype form
  */
 $form-bg-color: #eee !default;
 
 /**
- * @global {color} [$form-field-bg-color=#fff]
+ * @var {color} $form-field-bg-color
  * Default background-color for form fields.
  *
- * @class Ext.form.Field
+ * @member Ext.form.Field
  * @xtype field
  */
 $form-field-bg-color: #fff !default;
 
 /**
- * @global {color} [$form-light=#ddd]
+ * @var {color} $form-light
  * Light color for form fields, mostly used on field borders.
  *
- * @class Ext.form.Field
+ * @member Ext.form.Field
  * @xtype field
  */
 $form-light: #ddd !default;
 
 /**
- * @global {color} [$form-dark=#333]
+ * @var {color} $form-dark
  * Dark color for form fields, mostly used on labels/text.
  *
- * @class Ext.form.Field
+ * @member Ext.form.Field
  * @xtype field
  */
 $form-dark: #333 !default;
 
 /**
- * @global {measurement} [$form-label-width=6em]
+ * @var {measurement} $form-label-width
  * Default width for form labels.
  *
- * @class Ext.form.Field
+ * @member Ext.form.Field
  * @xtype field
  */
 $form-label-width: 6em !default;
 
 /**
- * @global {measurement} [$form-field-height=2.5em]
+ * @var {measurement} $form-field-height
  * Default height for form fields.
  *
- * @class Ext.form.Field
+ * @member Ext.form.Field
  * @xtype field
  */
 $form-field-height: 2.5em !default;
 
 /**
- * @global {measurement} [$form-spacing=.6em]
+ * @var {measurement} $form-spacing
  * Default spacing for form fields, used for padding, etc.
  *
- * @class Ext.form.Field
+ * @member Ext.form.Field
  * @xtype field
  */
 $form-spacing: .6em !default;
 
 /**
- * @global {measurement} [$form-textarea-height=6em]
+ * @var {measurement} $form-textarea-height
  * Default height for form textareas.
  *
- * @class Ext.form.TextArea
+ * @member Ext.form.TextArea
  * @xtype textareafield
  */
 $form-textarea-height: 6em !default;
 
 /**
- * @global {measurement} [$form-thumb-size=2.2em]
+ * @var {measurement} $form-thumb-size
  * Default size of "thumbs" for form sliders/toggles.
  *
- * @class Ext.form.Slider
+ * @member Ext.form.Slider
  * @xtype sliderfield
  */
 $form-thumb-size: 2.2em !default;
 
 /**
- * @global {measurement} [$form-toggle-size=$form-thumb-size - .35em]
+ * @var {measurement} $form-toggle-size
  * Thumb size minus padding for inset thumbs like in a Toggle element.
  *
- * @class Ext.form.Toggle
+ * @member Ext.form.Toggle
  * @xtype togglefield
  */
 $form-toggle-size: $form-thumb-size - .35em;
 
 /**
- * @global {measurement} [$form-fieldset-radius=.4em]
+ * @var {measurement} $form-fieldset-radius
  * Default border-radius for form fieldsets.
  *
- * @class Ext.form.FieldSet
+ * @member Ext.form.FieldSet
  * @xtype fieldset
  */
 $form-fieldset-radius: .4em !default;
 
 /**
- * @global {measurement} [$form-slider-size=.8em]
+ * @var {measurement} $form-slider-size
  * Height of the slider "track."
  *
- * @class Ext.form.Slider
+ * @member Ext.form.Slider
  * @xtype sliderfield
  */
 $form-slider-size: .8em !default;
@@ -131,7 +131,7 @@ $form-scrollable-fields: '.x-field-slider, .x-field-toggle, .x-field-checkbox, .
 /**
  * Includes default form styles.
  *
- * @class Ext.form.FormPanel
+ * @member Ext.form.FormPanel
  * @xtype button
  * @see background-gradient
  */
@@ -526,11 +526,11 @@ $form-scrollable-fields: '.x-field-slider, .x-field-toggle, .x-field-checkbox, .
 ;0;i;@;
 [ :@imported_filename"../globalo;
 ;0;i;@;
-[ ;"form-sliderso:Sass::Tree::CommentNode:@value"Ü/**
- * @global {color} [$form-bg-color=#eee]
+[ ;"form-sliderso:Sass::Tree::CommentNode:@value"}/**
+ * @var {color} $form-bg-color
  * Default background-color for forms.
  *
- * @class Ext.form.FormPanel
+ * @member Ext.form.FormPanel
  * @xtype form
  */;i	:@silent0;@:@lines[ ;
 [ :
@@ -539,97 +539,97 @@ $form-scrollable-fields: '.x-field-slider, .x-field-toggle, .x-field-checkbox, .
 alphai:
 greeniÓ:	blueiÓ;i:
 @name"form-bg-color;@;
-[ :@guarded"!defaulto;;"è/**
- * @global {color} [$form-field-bg-color=#fff]
+[ :@guarded"!defaulto;;"Ü/**
+ * @var {color} $form-field-bg-color
  * Default background-color for form fields.
  *
- * @class Ext.form.Field
+ * @member Ext.form.Field
  * @xtype field
  */;i;0;@;[ ;
 [ ;0o;;o;	;0;i;{ ;{	;iˇ;i;iˇ;iˇ;i;"form-field-bg-color;@;
-[ ;"!defaulto;;"ó/**
- * @global {color} [$form-light=#ddd]
+[ ;"!defaulto;;"é/**
+ * @var {color} $form-light
  * Light color for form fields, mostly used on field borders.
  *
- * @class Ext.form.Field
+ * @member Ext.form.Field
  * @xtype field
  */;i;0;@;[ ;
 [ ;0o;;o;	;0;i";{ ;{	;i›;i;i›;i›;i";"form-light;@;
-[ ;"!defaulto;;"ì/**
- * @global {color} [$form-dark=#333]
+[ ;"!defaulto;;"ä/**
+ * @var {color} $form-dark
  * Dark color for form fields, mostly used on labels/text.
  *
- * @class Ext.form.Field
+ * @member Ext.form.Field
  * @xtype field
  */;i$;0;@;[ ;
 [ ;0o;;o;	;0;i+;{ ;{	;i8;i;i8;i8;i+;"form-dark;@;
-[ ;"!defaulto;;"Ü/**
- * @global {measurement} [$form-label-width=6em]
+[ ;"!defaulto;;"~/**
+ * @var {measurement} $form-label-width
  * Default width for form labels.
  *
- * @class Ext.form.Field
+ * @member Ext.form.Field
  * @xtype field
  */;i-;0;@;[ ;
 [ ;0o;;o:Sass::Script::Number;i;i4:@denominator_units[ ;{ :@numerator_units["em:@original"6em;i4;"form-label-width;@;
-[ ;"!defaulto;;"ä/**
- * @global {measurement} [$form-field-height=2.5em]
+[ ;"!defaulto;;"Ä/**
+ * @var {measurement} $form-field-height
  * Default height for form fields.
  *
- * @class Ext.form.Field
+ * @member Ext.form.Field
  * @xtype field
  */;i6;0;@;[ ;
 [ ;0o;;o;;f2.5;i=;[ ;{ ;["em;"
 2.5em;i=;"form-field-height;@;
-[ ;"!defaulto;;"ú/**
- * @global {measurement} [$form-spacing=.6em]
+[ ;"!defaulto;;"ì/**
+ * @var {measurement} $form-spacing
  * Default spacing for form fields, used for padding, etc.
  *
- * @class Ext.form.Field
+ * @member Ext.form.Field
  * @xtype field
  */;i?;0;@;[ ;
 [ ;0o;;o;;f0.59999999999999998 33;iF;[ ;{ ;["em;"
 0.6em;iF;"form-spacing;@;
-[ ;"!defaulto;;"ô/**
- * @global {measurement} [$form-textarea-height=6em]
+[ ;"!defaulto;;"ë/**
+ * @var {measurement} $form-textarea-height
  * Default height for form textareas.
  *
- * @class Ext.form.TextArea
+ * @member Ext.form.TextArea
  * @xtype textareafield
  */;iH;0;@;[ ;
 [ ;0o;;o;;i;iO;[ ;{ ;["em;"6em;iO;"form-textarea-height;@;
-[ ;"!defaulto;;"¢/**
- * @global {measurement} [$form-thumb-size=2.2em]
+[ ;"!defaulto;;"ò/**
+ * @var {measurement} $form-thumb-size
  * Default size of "thumbs" for form sliders/toggles.
  *
- * @class Ext.form.Slider
+ * @member Ext.form.Slider
  * @xtype sliderfield
  */;iQ;0;@;[ ;
 [ ;0o;;o;;f2.2000000000000002 ôö;iX;[ ;{ ;["em;"
 2.2em;iX;"form-thumb-size;@;
-[ ;"!defaulto;;"«/**
- * @global {measurement} [$form-toggle-size=$form-thumb-size - .35em]
+[ ;"!defaulto;;"™/**
+ * @var {measurement} $form-toggle-size
  * Thumb size minus padding for inset thumbs like in a Toggle element.
  *
- * @class Ext.form.Toggle
+ * @member Ext.form.Toggle
  * @xtype togglefield
  */;iZ;0;@;[ ;
 [ ;0o;;o:Sass::Script::Operation
 ;ia:@operator:
 minus:@operand1o:Sass::Script::Variable	;ia;"form-thumb-size;{ :@underscored_name"form_thumb_size;@á:@operand2o;;f0.34999999999999998 ff;ia;[ ;@á;["em;"0.35em;ia;"form-toggle-size;@;
-[ ;0o;;"ú/**
- * @global {measurement} [$form-fieldset-radius=.4em]
+[ ;0o;;"ì/**
+ * @var {measurement} $form-fieldset-radius
  * Default border-radius for form fieldsets.
  *
- * @class Ext.form.FieldSet
+ * @member Ext.form.FieldSet
  * @xtype fieldset
  */;ic;0;@;[ ;
 [ ;0o;;o;;f0.40000000000000002 ôö;ij;[ ;{ ;["em;"
 0.4em;ij;"form-fieldset-radius;@;
-[ ;"!defaulto;;"ç/**
- * @global {measurement} [$form-slider-size=.8em]
+[ ;"!defaulto;;"Ñ/**
+ * @var {measurement} $form-slider-size
  * Height of the slider "track."
  *
- * @class Ext.form.Slider
+ * @member Ext.form.Slider
  * @xtype sliderfield
  */;il;0;@;[ ;
 [ ;0o;;o;;f0.80000000000000004 ôö;is;[ ;{ ;["em;"
@@ -655,10 +655,10 @@ color;{ ;%"
 color;i};["border-color;@;
 [ ;0i ;1[[o;$;"
 color;{ ;%"
-coloro;	;0;i{;@ı;{	;i ;i;i ;i o;;"z/**
+coloro;	;0;i{;@ı;{	;i ;i;i ;i o;;"{/**
  * Includes default form styles.
  *
- * @class Ext.form.FormPanel
+ * @member Ext.form.FormPanel
  * @xtype button
  * @see background-gradient
  */;iÄ;0;@;[ ;

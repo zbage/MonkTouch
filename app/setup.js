@@ -3,6 +3,7 @@ MonkMobile.templates = {
 	defaultDetail:"<h2>{title}</h2> {text}",
 	eventDetail:"<h2>{title}</h2><h5>{times}</h5> {text}",
 	mediaDetail: "<h2>{title}</h2><h4>{date}</h4><audio src='{audio}' controls /><p>{text}</p>",
+	audioDetail: "<div id='player'><div class='play cntr' title='play' id='playctr'></div><div id='buffertrack'><div id='scrub'></div><div id='loader'></div><div id='progress'></div></div></div><audio src='{audio}' controls /><h2>{title}</h2><h4>{date}</h4><p>{text}</p>",
 	embedVideoDetail: '<h2>{title}</h2><h4>{date}</h4><tpl if="embedsrc"><div class="videmed" style="width:300;"><iframe frameborder="0" src="{embedsrc}" width="300"></iframe></div></tpl>{text}',
 	mediaList: "{title}",
 	articleList: "{title}",
