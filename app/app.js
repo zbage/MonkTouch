@@ -31,9 +31,10 @@ Ext.TabBarEasyScroll = Ext.extend(Ext.TabBar, {
     }
 });
 
+
 Ext.regApplication('MonkMobile',{
     defaultTarget: "viewport",
-   // defaultUrl : 'Welcome/index',
+    defaultUrl : 'Welcome/index',
     name: "MonkMobile",
     useHistory : true,
     launch: function() {

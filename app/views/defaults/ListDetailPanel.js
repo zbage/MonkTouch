@@ -11,6 +11,7 @@ MonkMobile.views.ListDetailPanel = Ext.extend(Ext.Panel, {
 	scroll:true,
     initComponent : function() {
 		//console.log(MonkMobile.viewport.dockedItems.map.tabBar.activeTab.viewtpl.detail);
+             
 		this.tpl =  MonkMobile.viewport.dockedItems.map.tabBar.activeTab.viewtpl.detail
         this.dockedItems = {
             dock: 'top',
@@ -22,7 +23,22 @@ MonkMobile.views.ListDetailPanel = Ext.extend(Ext.Panel, {
                 itemId: 'backButton'
             }            
         };
-		
+        this.listeners = {
+           afterrender:function(){
+               //var currentPanel = Ext.get(this.id);
+               var audioElm = document.getElementsByTagName('audio');
+               for(var i = 0; i < audioElm.length; i++){
+                   var audioctr = new audioControls(audioElm[i]);
+               }
+            },
+            beforehide:function(){
+                var audioElm = document.getElementsByTagName('audio');
+                for(var i = 0; i < audioElm.length; i++){
+                    audioElm[i].pause();
+                }
+            }
+        };
+        
         MonkMobile.views.ListDetailPanel.superclass.initComponent.apply(this, arguments);
     }
 });

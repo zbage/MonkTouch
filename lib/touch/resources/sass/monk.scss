@@ -203,5 +203,82 @@ $toolbar-gradient: 'matte';
 	background-color:#000 !important;
 }
 
+.auplayer{
+    -webkit-box-shadow: inset 0 1px 3px 0px black;
+    background-image:url(/mobile/public/resources/images/bg-pattern.jpg);
+    width: 120%;
+    position: relative;
+    display: block;
+    top: -20px;
+    left: -20px;
+    overflow: hidden;
+    padding: 20px 10px;
+    margin-bottom: 10px;
+    
+    .cntr{
+        background-image:url(/mobile/public/resources/images/controls.png);
+        background-repeat:no-repeat;
+        display:block;
+        height:17px; 
+        width:15px;
+        padding:15px;
+        border: 1px solid #111111;
+        border-radius:10px;
+        float:left;
+        margin-right:10px;
+        -webkit-box-shadow: inset 0px 1px 1px rgba(206, 206, 206, 0.20);
+    }
+    
+    .playctr[title='play']{
+       background-position:10px 8px;
+       background-color:rgba(0,0,0,0.6);
+    }
+    .playctr[title='pause']{
+       background-position:10px -24px;
+       background-color:rgba(0,0,0,0.4);
+    } 
+    
+    .loader,
+    .track,
+    .scrub{
+       border-radius:12px;
+       height:12px; 
+       width:255px; 
+       position:relative;
+       top:13px; 
+    }
+    .track{
+       background-color:#111;
+       position:relative; 
+       overflow:hidden;
+       -webkit-box-shadow: 1px 1px 2px 0px #000 inset;         
+    }                         
+    .loader{
+       background-color:#333;
+       position:absolute;
+       z-index:0;
+       top:0px;
+       left:0px;
+       -webkit-box-shadow: 1px 1px 2px 0px #111 inset;     
+    } 
+    .scrub{
+       position:absolute;
+       z-index:10;
+       top:0px;
+       left:0px;
+    }
+    
+    .progress{
+          background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(206,206,206,1)), color-stop(100%,rgba(158,158,158,1)));
+          position:absolute;
+          z-index:1;
+          top:0px;
+          left:0px;
+          height:12px;
+          width:100%;
+          border-radius:12px;
+      } 
+}
+
 
 
