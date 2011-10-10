@@ -11,7 +11,7 @@ MonkMobile.templates = {
 	galleryList:'<div class="avatar"<tpl if="thmb"> style="background-image: url({thmb}); width:50px; height:50px; overflow:hidden; display:block; float:left; margin-right:10px;"</tpl>></div><span class="name">{title}<p class="subline"><span class="imgnumber">{number}</span> images</p></span>' 
 }
 MonkMobile.feature = {
-	tpl: '<div class="latest"><div class="media-wrap"><div  id="playmedia" data-url="{audio}" class="listen"><img src="/mobile/public/resources/images/play_btn.png"/></div><img src="{image}" class="latest-image" width="320" height="150" /></div><h6>Latest Message <time>{date}</time></h6><h3>{title}</h3><p class="preview">{preview}</p></div><div id="moretabinfo">SWIPE TAB BAR TO SEEM MORE</div>'
+	tpl: '<div class="latest"><div class="media-wrap"><div  id="playmedia" data-url="{audio}" class="listen"><img src="/mobile/public/resources/images/play_btn.png"/></div><img src="{image}" class="latest-image" width="320" height="150" /></div><h6>Latest Message <time>{date}</time></h6><h3>{title}</h3><p class="preview">{preview}</p></div><div id="moretabinfo">SWIPE TAB BAR TO SEE MORE</div>'
 }
 MonkMobile.setup = {
 	tabs :[ 
