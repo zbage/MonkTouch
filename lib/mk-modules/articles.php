@@ -78,8 +78,8 @@ $string = getContent(
 		    audio => $value[7],
 		    video => $value[8],
 		    embed => array(
-		        type => ,
-		        media_id =>,
+		        type => $type,
+		        media_id => $media_id,
 		        code => $value[9]
 		    ), 
 		    thmb => $value[10]
