@@ -46,6 +46,8 @@ $string = getContent(
 		"show:__location__",
 		"show:||",
 		"show:__slug__",
+		"show:||",
+		"show:__registration linktext='Register'__",
 		"show:~~",
 		"noecho"
 	); 
@@ -83,7 +85,8 @@ $string = getContent(
 		            address => $value[13],
 		            googlemap => $value[12]
 		        ),
-		    slug => $value[15]
+		    slug => $value[15],
+		    register => $value[16]
 		    );
 	    $i++;
 	}

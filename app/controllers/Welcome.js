@@ -1,4 +1,4 @@
-                          /**
+/**
  * @class Welcome
  * @extends Ext.Controller
  * The Welcome controller

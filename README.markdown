@@ -52,6 +52,7 @@ The /app/__setup.js__ file determines application tabs and Ekklesia360 modules t
 | Location Address      | {address}     | Location Address of the event                                                    |
 | Google Map            | {googlemap}   | Google map of location                                                           | 
 | Slug                  | {slug}        | Slug format of sermon name (event-name-slug)                                     | 
+| Registration          | {register}    | Registration Link with linktext = Register                                       | 
 
 #### Blogs
 

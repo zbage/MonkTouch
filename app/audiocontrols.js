@@ -30,17 +30,26 @@ function audioControls(ao){
       }
       
       this.initControls = function(){
-          loader.style.width = 0+'%';
-          progress.style.width = 0+'%';
-          play.title = 'play';
-
-          play.addEventListener('touchstart',this.togglePlay,false); 
-          scrub.addEventListener('touchstart',function(e){ 
-              setPlayProgress(e.targetTouches[0].pageX);
-          },false);
-          
-          parent = audioobj.parentNode;
-          audioobj.parentNode.insertBefore(wrap, parent.childNodes[0]);    
+          if(document.createElement('audio').canPlayType('audio/mpeg')){
+              loader.style.width = 0+'%';
+              progress.style.width = 0+'%';
+              play.title = 'play';
+    
+              play.addEventListener('touchstart',this.togglePlay,false); 
+              scrub.addEventListener('touchstart',function(e){ 
+                  setPlayProgress(e.targetTouches[0].pageX);
+              },false);
+              
+              parent = audioobj.parentNode;
+              parent.insertBefore(wrap, parent.childNodes[0]);
+          }else{
+               var playbutton = document.getElementById("droidplay");
+                   playbutton.style.display = "block";
+                   //playbutton.appendChild(document.createTextNode("PLAY"));
+                   //playbutton.appendChild(document.createTextNode(src));
+                   //audioobj.parentNode.appendChild(playbutton);
+                   
+          }  
       }
       
      audioobj.addEventListener('play',function(){

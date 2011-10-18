@@ -10,6 +10,7 @@ Ext.regModel("Events", {
 		{name: "preview", type: "string"},
 		{name: "image", type: "string"},
 		{name: "slug", type: "string"},
+		{name: "register", type: "string"},
 		{name: "startDate", type:"string",mapping:"date.startDate"},
 		{name: "month", type:"string",mapping:"date.month"},
 		{name: "day", type:"string",mapping:"date.day"},
