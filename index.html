@@ -1,62 +1,76 @@
-<!doctype html>
-<!-- <html manifest="/mobile/mobile.manifest"> -->
-<html>
+<!DOCTYPE HTML>
+<html manifest="" lang="en-US">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
-    <title>Monk Mobile</title>
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <link rel="apple-touch-icon" href="public/resources/images/webclipicn.png"/>   
-	<link rel="apple-touch-icon" sizes='114x114' href="public/resources/images/webclipicn-retina.png"/> 
-	
-	<link rel="apple-touch-startup-image" href="public/resources/images/startupimage.jpg"/>  
-    <link rel="stylesheet" href="lib/touch/resources/css/monk.css" />
-    <!-- <link rel="stylesheet" href="public/resources/css/application.css"> -->
+    <meta charset="UTF-8">
+    <title>Monk Mobile 2.0</title>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="apple-touch-startup-image" href="resources/loading/Homescreen.jpg"/>  
+
+    <style type='text/css'>
+      html,body{ height:100%; }
+      #appLoadingIndicator{
+        position:absolute;
+        top:50%;
+        left:50%;
+        margin-top:-40px;
+        margin-left:-40px;
+        width:80px;
+        height:80px;
+      }
+      
+      #appLoadingIndicator > .ball {
+          background-color: rgba(0,0,0,0);
+          border:10px solid rgba(148,148,148,0.5);
+          opacity:.9;
+          border-top:10px solid rgba(0,0,0,0);
+          border-left:10px solid rgba(0,0,0,0);
+          border-radius:50px;
+          /*box-shadow: 0 0 35px #555555;*/
+          width:80px;
+          height:80px;
+          margin:0 auto;
+          -moz-animation:spin 1s infinite linear;
+          -webkit-animation:spin 1s infinite linear;
+      }
+      #appLoadingIndicator > .ball1 {
+          background-color: rgba(0,0,0,0);
+          border:6px solid rgba(148,148,148,0.4);
+          opacity:.9;
+          border-top:6px solid rgba(0,0,0,0);
+          border-left:6px solid rgba(0,0,0,0);
+          border-radius:50px;
+          /*box-shadow: 0 0 15px #555555; */
+          width:50px;
+          height:50px;
+          margin:0 auto;
+          position:relative;
+          top:-65px;
+          -moz-animation:spinoff 1s infinite linear;
+          -webkit-animation:spinoff 1s infinite linear;
+      }
+      @-moz-keyframes spin {
+          0% { -moz-transform:rotate(0deg); }
+          100% { -moz-transform:rotate(360deg); }
+      }
+      @-moz-keyframes spinoff {
+          0% { -moz-transform:rotate(0deg); }
+          100% { -moz-transform:rotate(-360deg); }
+      }
+      @-webkit-keyframes spin {
+          0% { -webkit-transform:rotate(0deg); }
+          100% { -webkit-transform:rotate(360deg); }
+      }
+      @-webkit-keyframes spinoff {
+          0% { -webkit-transform:rotate(0deg); }
+          100% { -webkit-transform:rotate(-360deg); }
+      }
+    </style>
+    <script id="microloader" src="sdk/microloader/development.js"></script>
 </head>
 <body>
-    <script src="lib/touch/sencha-touch.js"></script>
-    <script src="lib/touch/pkgs/platform/mvc.js"></script>
-    
-    <div id="sencha-app"> 
-        <script src="app/routes.js"></script>
-        <script src="app/app.js"></script>
-        <script src="app/setup.js"></script>
-        <script src="app/audiocontrols.js"></script>  
-        
-        <!-- Place your model files here -->
-        <div id="sencha-models">
-           <script src="app/models/Media.js"></script>
-           <script src="app/models/Articles.js"></script>
-           <script src="app/models/Blogs.js"></script>
-           <script src="app/models/Events.js"></script>
-  		   <script src="app/models/Galleries.js"></script>
-		   <script src="app/models/Photos.js"></script>
-        </div>
-        
-        <!-- Place your controller files here -->
-        <div id="sencha-controllers">
-               <script src="app/controllers/Media.js"></script> 
-               <script src="app/controllers/Section.js"></script> 
-               <script src="app/controllers/Articles.js"></script>
-               <script src="app/controllers/Blogs.js"></script>
-               <script src="app/controllers/Events.js"></script> 
-               <script src="app/controllers/Link.js"></script> 
-               <script src="app/controllers/Welcome.js"></script>
-			   <script src="app/controllers/Galleries.js"></script> 
-        </div>
-        
-        <!-- Place your view files here -->
-        <div id="sencha-views">
-            <script src="app/views/Viewport.js"></script>
-            <script src="app/views/defaults/ListPanel.js"></script> 
-            <script src="app/views/defaults/ListDetailPanel.js"></script> 
-            <script src="app/views/defaults/Welcome.js"></script> 
-            <script src="app/views/section/SectionDetail.js"></script>
-  			<script src="app/views/photos/Photos.js"></script>
-  			<script src="app/views/photos/PhotosDetail.js"></script>
-        </div>
-    </div>
+    <div id='appLoadingIndicator'>
+        <div class="ball"></div>
+        <div class="ball1"></div>
+      </div>
 </body>
 </html>
