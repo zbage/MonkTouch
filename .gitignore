@@ -1,2 +1,6 @@
-.DS_Store
 .htaccess
+.sass-cache/
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
