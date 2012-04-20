@@ -7,7 +7,7 @@ $json;
 $category = "";
 $series = "";
 $group = "";
-$howmany = "";
+$howmany = "20";
 $order = "recent";
 $hideseries="";
 $hidecategory="";
@@ -172,8 +172,9 @@ $string = getContent(
         series => $value[13],
         seriesimage => $value[14],
         passage => $value[15],
-        tags => $value[16],
-        notes=> $value[17]
+        group => $value[16],
+        tags => $value[17],
+        notes => $value[18]
         );
         $i++;
   }
