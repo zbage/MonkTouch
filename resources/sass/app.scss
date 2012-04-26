@@ -69,6 +69,38 @@ $textshadow:1px 1px 1px #fff;
 
 //edit below this line with caution
 
+body{
+  background-color:#000000;
+}
+#trainer{
+  @include background-gradient($base-color,matte);
+  .x-innerhtml p{
+    text-align:center;
+    font-weight:bold !important;
+    margin-bottom:0px;
+    text-shadow: -1px -1px 1px #000000;
+    color:#eeeeee;
+  }
+  .x-panel-inner , .x-body{
+    background-color:transparent !important;
+    color:#fefefe;
+  }
+}
+#trainer-dismiss{
+  color:#ffffff !important;
+  @include background-gradient($dark-red,matte);
+  border:none;
+}
+#trainer-dismiss .x-button-label{
+    line-height:15px;
+    color:#ffffff !important;
+    text-shadow: -1px -1px 1px #444;
+    margin-top:-3px;
+}
+#trainer-dismiss.x-button-pressing{
+  @include background-gradient($dark-red,recessed);
+}
+
 .x-button-back .x-button-label {
     color: #fff;
 }
@@ -268,6 +300,8 @@ a.mediaplay:active{
   }
   
 }
+
+
 
 /*
 .auplayer{

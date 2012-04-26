@@ -18,7 +18,8 @@ Ext.define('MonkTouch.controller.Viewport',{
   },
   tabPanelShow:function(tp){
 	  var main = tp.getActiveItem(),
-        config = main.getInitialConfig();
+        config = main.getInitialConfig(),
+        tb = Ext.ComponentQuery.query('#ext-tabbar-1')[0];
     if(config.view === 'navview'){
       main.setItems([{
     	  xtype:config.view,
@@ -45,6 +46,67 @@ Ext.define('MonkTouch.controller.Viewport',{
       }]);
     }
 		MonkTouch.setup.setActiveTab(main);
+
+    //swipe tooltip
+    var sptr = localStorage.getItem('swipetrainer'),
+        scrl = tp.getTabBar().getScrollable().getScroller();
+    if(Ext.os.is.Phone && tp.getTabBar().getItems().length > 5){
+      if(sptr != 'off' || sptr === undefined){
+        var toolTip = Ext.create('Ext.Panel',{
+          padding:'0 5 0 5',
+          width:'225px',
+          height:'35px',
+          id:'trainer',
+          showAnimation:'fadeIn',
+          hideAnimation:'slideOut',
+          listeners:{
+            show:function(el){
+              scrl.scrollToEnd();
+              scrl.on({
+                scrollstart:function(){
+                  el.hide();
+                  localStorage.setItem("swipetrainer", "off");
+                }
+              });
+            },
+            tap:function(el){
+              el.hide();
+            }
+          },
+          items:[
+
+            { 
+              xtype:'button',
+              id:'trainer-dismiss',
+              text:'x',
+
+              docked:'right',
+              style:{
+                'font-weight':'bold',
+                'font-size':'18px',
+                'line-height':'15px'
+              }
+            },
+            {
+              xtype:'panel',
+              html:'<p>Swipe To See More</p>',
+              padding: '0 0 10 0'
+            }
+          ],
+          control:{
+            'button[id=trainer-dismiss]':{
+              tap:function(){
+                  this.hide();
+                  localStorage.setItem("swipetrainer", "off");
+              }
+            }
+          }
+        }).showBy(tb,'bc-tc');
+        
+
+        
+      }
+    }
   },
   onTabChange:function(a,b,c){
     
