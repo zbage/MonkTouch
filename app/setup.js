@@ -1,9 +1,9 @@
 Ext.define('MonkTouch.setup',{
     singleton: true, //don't worry about this.
     activeTab:0, //initial tab for application to show
-    basePath:'',
+    basePath:'/',
     tabs:[
-      
+
         {
             title   : 'Media',
             view   : 'navview',
@@ -19,7 +19,6 @@ Ext.define('MonkTouch.setup',{
             },
             xtype:'panel',
             layout:'fit'
-            
         },
         {
             title   : 'Media2',
@@ -36,9 +35,7 @@ Ext.define('MonkTouch.setup',{
             },
             xtype:'panel',
             layout:'fit'
-            
         },
-        
         {
             title   : 'Articles',
             iconCls : 'list',
@@ -120,7 +117,6 @@ Ext.define('MonkTouch.setup',{
             layout:'fit'
             
         },
-        
         {
             title   : 'Photos',
             iconCls : 'photo3',

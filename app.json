@@ -3,7 +3,7 @@
      * The application's namespace, used by Sencha Command to generate classes
      */
     "name": "MonkTouch",
-    "url":"http://localhost",//change this to your localhost app location
+    "url":"http://trinity.local:9110",//change this to your localhost app location
     /**
      * List of all JavaScript assets in the right execution order.
      * Each item is an object with the following format:
@@ -101,7 +101,7 @@
         "product": "touch",
         "minVersion": 3,
         "debug": false,
-        "logger": "no"
+        "logger": false
     },
 
     /**

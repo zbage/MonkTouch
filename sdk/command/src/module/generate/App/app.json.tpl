@@ -90,7 +90,7 @@
     "resources": [
         "resources/images",
         "resources/icons",
-        "resources/loading"
+        "resources/startup"
     ],
 
     /**
@@ -123,7 +123,7 @@
         "product": "touch",
         "minVersion": 3,
         "debug": false,
-        "logger": "no"
+        "logger": false
     {[ "\}"]},
 
     /**

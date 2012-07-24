@@ -498,7 +498,13 @@ Ext.define('Ext.data.Store', {
          * to an internal removed array. When you then sync the Store, we send a destroy request for these records.
          * If you don't want this to happen, you can set this configuration to false.
          */
-        syncRemovedRecords: true
+        syncRemovedRecords: true,
+
+        /**
+         * @cfg {Boolean} destroyRemovedRecords This configuation allows you to prevent destroying record
+         * instances when they are removed from this store and are not in any other store.
+         */
+        destroyRemovedRecords: true
     },
 
     /**
@@ -632,12 +638,16 @@ Ext.define('Ext.data.Store', {
 
         if (!proxy && this.getModel()) {
             proxy = this.getModel().getProxy();
+        }
 
-            if (!proxy) {
-                proxy = new Ext.data.proxy.Memory({
-                    model: this.getModel()
-                });
-            }
+        if (!proxy) {
+            proxy = new Ext.data.proxy.Memory({
+                model: this.getModel()
+            });
+        }
+
+        if (proxy.isMemoryProxy) {
+            this.setSyncRemovedRecords(false);
         }
 
         return proxy;
@@ -895,10 +905,9 @@ Ext.define('Ext.data.Store', {
             data = this.data,
             ln = records.length,
             Model = this.getModel(),
-            existingRecords = [],
-            indices = [],
             modelDefaults = me.getModelDefaults(),
-            i, record, added = false;
+            added = false,
+            i, record;
 
         records = records.slice();
 
@@ -913,11 +922,6 @@ Ext.define('Ext.data.Store', {
                 Ext.Array.remove(this.removed, record);
             }
 
-            // If the record already exists in our data collection then we don't add it again
-            if (data.indexOf(record) !== -1) {
-                existingRecords.push(record);
-            }
-
             record.set(modelDefaults);
             record.join(me);
 
@@ -927,28 +931,9 @@ Ext.define('Ext.data.Store', {
             sync = sync || (record.phantom === true);
         }
 
-        if (existingRecords.length) {
-            for (i = 0, ln = existingRecords.length; i < ln; i++) {
-                record = existingRecords[i];
-                record._tmpIndex = data.indexOf(record);
-            }
-
-            Ext.Array.sort(existingRecords, function(record1, record2) {
-                return record1._tmpIndex < record2._tmpIndex ? 1 : -1;
-            });
-
-            for (i = 0; i < ln; i++) {
-                record = existingRecords[i];
-                indices.push(record._tmpIndex);
-                delete record._tmpIndex;
-            }
-
-            me.fireEvent('removerecords', me, existingRecords, indices);
-        }
-
         // Now we insert all these records in one go to the collection. Saves many function
         // calls to data.insert. Does however create two loops over the records we are adding.
-        if (ln === 1) {
+        if (records.length === 1) {
             added = data.insert(index, records[0]);
             if (added) {
                 added = [added];
@@ -972,7 +957,7 @@ Ext.define('Ext.data.Store', {
      * Removes the given record from the Store, firing the 'removerecords' event passing all the instances that are removed.
      * @param {Ext.data.Model/Ext.data.Model[]} records Model instance or array of instances to remove
      */
-    remove: function(records) {
+    remove: function (records) {
         if (records.isModel) {
             records = [records];
         }
@@ -981,6 +966,8 @@ Ext.define('Ext.data.Store', {
             sync = false,
             i = 0,
             autoSync = this.getAutoSync(),
+            syncRemovedRecords = me.getSyncRemovedRecords(),
+            destroyRemovedRecords = this.getDestroyRemovedRecords(),
             ln = records.length,
             indices = [],
             removed = [],
@@ -1000,14 +987,17 @@ Ext.define('Ext.data.Store', {
                     indices.push(index);
                 }
 
-                if (!isPhantom && me.getSyncRemovedRecords()) {
-                     // don't push phantom records onto removed
-                     me.removed.push(record);
+                record.unjoin(me);
+                me.data.remove(record);
+
+                if (destroyRemovedRecords && !syncRemovedRecords && !record.stores.length) {
+                    record.destroy();
+                }
+                else if (!isPhantom && syncRemovedRecords) {
+                    // don't push phantom records onto removed
+                    me.removed.push(record);
                 }
 
-                record.unjoin(me);
-
-                me.data.remove(record);
                 sync = sync || !isPhantom;
             }
         }
@@ -1043,14 +1033,26 @@ Ext.define('Ext.data.Store', {
         }
     },
 
-    doRemoveAll: function(silent) {
-        var me = this;
-        me.data.each(function(record) {
+    doRemoveAll: function (silent) {
+        var me = this,
+            destroyRemovedRecords = this.getDestroyRemovedRecords(),
+            syncRemovedRecords = this.getSyncRemovedRecords(),
+            records = me.data.all.slice(),
+            ln = records.length,
+            i, record;
+
+        for (i = 0; i < ln; i++) {
+            record = records[i];
             record.unjoin(me);
-        });
-        if (me.getSyncRemovedRecords()) {
-            me.removed = me.removed.concat(me.data.items);
+
+            if (destroyRemovedRecords && !syncRemovedRecords && !record.stores.length) {
+                record.destroy();
+            }
+            else if (record.phantom !== true && syncRemovedRecords) {
+                me.removed.push(record);
+            }
         }
+
         me.data.clear();
 
         if (silent !== true) {
@@ -1074,12 +1076,21 @@ Ext.define('Ext.data.Store', {
     },
 
     /**
-     * Gets the number of cached records.
+     * Gets the number of cached records. Note that filtered records are not included in this count
      * If using paging, this may not be the total size of the dataset.
      * @return {Number} The number of Records in the Store's cache.
      */
     getCount: function() {
-        return this.data.length || 0;
+        return this.data.items.length || 0;
+    },
+
+    /**
+     * Gets the number of all cached records including the ones currently filtered
+     * If using paging, this may not be the total size of the dataset.
+     * @return {Number} The number of all Records in the Store's cache.
+     */
+    getAllCount: function () {
+        return this.data.all.length || 0;
     },
 
     /**
@@ -1356,29 +1367,29 @@ Ext.define('Ext.data.Store', {
      */
     filter: function(property, value, anyMatch, caseSensitive) {
         var data = this.data,
-            ln = data.length;
+            filter = property ? ((Ext.isFunction(property) || property.isFilter) ? property : {
+                property     : property,
+                value        : value,
+                anyMatch     : anyMatch,
+                caseSensitive: caseSensitive,
+                // By setting the id we ensure there is only one filter active
+                // at a time for this property.
+                id           : property
+            }) : null;
 
         if (this.getRemoteFilter()) {
             if (property) {
                 if (Ext.isString(property)) {
-                    data.addFilters({
-                        property     : property,
-                        value        : value,
-                        anyMatch     : anyMatch,
-                        caseSensitive: caseSensitive
-                    });
+                    data.addFilters(filter);
                 }
                 else if (Ext.isArray(property) || property.isFilter) {
                     data.addFilters(property);
                 }
             }
         } else {
-            data.filter(property, value, anyMatch, caseSensitive);
+            data.filter(filter);
             this.fireEvent('filter', this, data, data.getFilters());
-
-            if (data.length !== ln) {
-                this.fireEvent('refresh', this, data);
-            }
+            this.fireEvent('refresh', this, data);
         }
     },
 
@@ -1900,16 +1911,33 @@ Ext.define('Ext.data.Store', {
 
     doDataRefresh: function(store, data, operation) {
         var records = operation.getRecords(),
-            me = this;
+            me = this,
+            destroyRemovedRecords = me.getDestroyRemovedRecords(),
+            syncRemovedRecords = me.getSyncRemovedRecords(),
+            currentRecords = data.all.slice(),
+            removed = me.removed,
+            ln = currentRecords.length,
+            i, record;
 
         if (operation.getAddRecords() !== true) {
-            data.each(function(record) {
+            for (i = 0; i < ln; i++) {
+                record = currentRecords[i];
                 record.unjoin(me);
-            });
-            data.clear();
 
+                // If the record we are removing is not part of the records we are about to add to the store then handle
+                // the destroying or removing of the record to avoid memory leaks.
+                if (records.indexOf(record) === -1) {
+                    if (syncRemovedRecords && record.phantom !== true) {
+                        removed.push(record);
+                    }
+                    else if (destroyRemovedRecords && !syncRemovedRecords && !record.stores.length) {
+                        record.destroy();
+                    }
+                }
+            }
+            data.clear();
             // This means we have to fire a clear event though
-            me.fireEvent('clear', this);
+            me.fireEvent('clear', me);
         }
 
         if (records && records.length) {
@@ -1919,7 +1947,7 @@ Ext.define('Ext.data.Store', {
             me.resumeEvents();
         }
 
-        this.fireEvent('refresh', this, this.data);
+        me.fireEvent('refresh', me, data);
     },
 
     /**
