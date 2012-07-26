@@ -355,8 +355,7 @@ Installing the SDK tools adds sencha commands for your terminal.
 
 Next, get the application files from this repository and you will need to place them in a local web directory. Using your OS's local web server or [MAMP](http://mamp.info) you will need a url to your application directory for building the app.  There are other tools like [MAMP Pro](http://mamp.info) and [VirtualHostX](http://clickontyler.com/virtualhostx/) that will allow you to create a virtual host name that makes the process easier.
 
-In the root directory of the application there is an **app.json** file.  There is a variable at the top of that file called 'url', which will need to be changed to the virtual host url before building the app can take place.
-
+In the root directory of the application there is an **app.json** file.  There is a variable at the top of that file called 'url', which will need to be changed to the virtual host url *path to your development directory* before building the app can take place.
 The SDK when run takes all the assets(javascript, css), minifies and combines them and removes unneeded javascript classes. This allows the application to be as lean as possible for the mobile environment.
 
 When you have your local server setup open your terminal and go to the directory of your application. 
