@@ -1,7 +1,7 @@
 Ext.define('MonkTouch.setup',{
     singleton: true, //don't worry about this.
     activeTab:0, //initial tab for application to show
-    basePath:'/',
+    basePath:'',
     tabs:[
 
         {
@@ -10,12 +10,12 @@ Ext.define('MonkTouch.setup',{
             iconCls : 'headphones',
             storeName   : 'sermons',
             filters : {
-    		      howmany:15,
     		      //hide_series:'job-an-audience-with-god'
+              
             },
             contentTpl:{
-              list: 'imageList',
-              detail: 'sermonDetail'
+              list: 'defaultList',
+              detail: 'embedVideoDetail'
             },
             xtype:'panel',
             layout:'fit'
@@ -26,7 +26,6 @@ Ext.define('MonkTouch.setup',{
             iconCls : 'headphones',
             storeName   : 'Sermons',
             filters : {
-    		      howmany:20,
     		      hide_series:'job-an-audience-with-god'
             },
             contentTpl:{
@@ -42,8 +41,7 @@ Ext.define('MonkTouch.setup',{
             view   : 'navview',
             storeName   : 'articles',
             filters : {
-				      howmany:20,
-				      //series:'job-an-audience-with-god'
+			       //series:'job-an-audience-with-god'
             },
             contentTpl:{
               list: 'articleList',
@@ -60,8 +58,7 @@ Ext.define('MonkTouch.setup',{
             storeName   : 'Blogs',
             filters : {
               blogname:'blog-layout-1'
-				      //howmany:10,
-				      //series:'job-an-audience-with-god'
+			  //series:'job-an-audience-with-god'
             },
             contentTpl:{
               list: 'defaultList',
@@ -77,8 +74,7 @@ Ext.define('MonkTouch.setup',{
             view   : 'navview',
             storeName   : 'Events',
             filters : {
-				      //howmany:10,
-				      //series:'job-an-audience-with-god'
+			 //series:'job-an-audience-with-god'
             },
             contentTpl:{
               list: 'eventList',
@@ -91,9 +87,9 @@ Ext.define('MonkTouch.setup',{
             title   : 'Directions',
             iconCls : 'doc2',
             view   : 'section',
-            storeName   : 'Section',
+            storeName  : 'Section',
             filters : {
-				      id:'mobile-directions'
+			       id:'mobile-directions'
             },
             contentTpl:{
               detail: 'defaultDetail'
@@ -106,9 +102,9 @@ Ext.define('MonkTouch.setup',{
             title   : 'Contact',
             iconCls : 'doc2',
             view   : 'section',
-            storeName   : 'Section',
+            storeName  : 'Section',
             filters : {
-				      id:'mobile-contact'
+			       id:'mobile-contact'
             },
             contentTpl:{
               detail: 'defaultDetail'
@@ -121,7 +117,7 @@ Ext.define('MonkTouch.setup',{
             title   : 'Photos',
             iconCls : 'photo3',
             view   : 'galleryview',
-            storeName   : 'Galleries',
+            storeName  : 'Galleries',
             filters : {
             },
             contentTpl:{
@@ -148,7 +144,6 @@ Ext.define('MonkTouch.setup',{
     }
 });
 
-
 Ext.define('MonkTouch.templates',{
     //creates instance upon load
     singleton: true,  
@@ -157,9 +152,9 @@ Ext.define('MonkTouch.templates',{
         defaultDetail   : "<h2>{title}</h2> {text}",
         articleDetail   : '<h2>{title}</h2><h4>{date} <tpl if="author"><span>by {author}</span></tpl></h4> {text}',
         eventDetail     : "<h2>{title}</h2><h5>{times}</h5> {text}",
-        mediaDetail     : "<h2>{title}</h2><h4>{date}</h4><audio src='{audio}' controls /><a href='{audio}' id='droidplay' style='display:none;'>PLAY</a><p>{text}</p>",
+        mediaDetail     : "<h2>{title}</h2><h4>{date}</h4><audio src='{audio}' controls /><a href='{audio}' style='display:none;'>PLAY</a><p>{text}</p>",
         sermonDetail    : '<h2>{title}</h2><h4>{date} <tpl if="author"><span>by {author}</span></tpl></h4><p class="passage">{passage}</p><p><tpl if="audio"><a data-audio="{audio}" title="{title}" class="mediaplay audio">Listen</a></tpl><tpl if="video"><a data-video="{video}" <tpl if="image">data-image="{image}"</tpl> title="{title}" class="mediaplay video">Watch</a></tpl></p><p>{text}</p>',
-        embedVideoDetail: '<h2>{title}</h2><h4>{date}</h4><tpl if="embedsrc"><div class="vidembed" style="width:100%;"><iframe frameborder="0" src="{embedsrc}" width="290" height="163" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div></tpl>{text}',
+        embedVideoDetail: '<tpl if="video"><video src="{video}" width="100%" poster="{image}"/></tpl><tpl if="embedsrc"><div class="vidembed" style="width:100%;"><iframe class="youtube-player" style="max-width:100%;" type="text/html" wmode="opaque" frameborder="0" src="{embedsrc}" width="100%"  webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div></tpl><h2>{title}</h2><h4>{date}</h4>{text}',
         articleList     : "<strong>{title}</strong><p class='subline'>{date}</p>",
         eventList       : '<div class="date"><span class="month">{month}</span><span class="day">{day}</span></div> {title}<tpl if="locname" <p class="subline">@ {locname}</p></tpl>',
         imageList       : '<div class="avatar" <tpl if="thmb"> style="background-image: url({thmb}); width:50px; height:50px; overflow:hidden; display:block; float:left; margin-right:10px;"</tpl>></div><span class="name">{title}</span>',
