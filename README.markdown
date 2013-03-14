@@ -138,7 +138,6 @@ This is a custom Sencha Touch class denoted by the Ext.define. It is loaded at t
            iconCls : 'headphones',
            storeName   : 'Sermons',
            filters : {
-   		      howmany:2,
    		      hide_series:'job-an-audience-with-god'
            },
            contentTpl:{
