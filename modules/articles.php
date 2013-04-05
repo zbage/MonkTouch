@@ -1,6 +1,6 @@
-<? require($_SERVER["DOCUMENT_ROOT"]."/monkcms.php"); 
+<? require($_SERVER["DOCUMENT_ROOT"]."/monkcms.php");
 
-$outarray; 
+$outarray;
 $nodes;
 $json;
 $output;
@@ -46,7 +46,7 @@ foreach($filters as $key=>$value){
             $hidecategory = $value;
             break;
         case 'hide_group':
-            $hidecgroup = $value;
+            $hidegroup = $value;
             break;
         case 'author':
             $author = $value;
@@ -57,16 +57,16 @@ foreach($filters as $key=>$value){
         case 'start':
               $offset = $value;
               break;
-            
-    }       
+
+    }
 }
 }
 
 
-$string = getContent(  
+$string = getContent(
     "article",
     "display:list",
-    "order:".$order, 
+    "order:".$order,
     "find_category:".$category,
     "find_series:".$series,
     "find_group:".$group,
@@ -75,8 +75,8 @@ $string = getContent(
     "find_author:".$author,
     "find_tag:".$tags,
     "hide_series:".$hideseries,
-    "hide_cateogory:".$hidecategory, 
-    "hide_group:".$hidegroup, 
+    "hide_cateogory:".$hidecategory,
+    "hide_group:".$hidegroup,
 		"show:__title__",
 		"show:||",
 		"show:__image__",
@@ -100,17 +100,17 @@ $string = getContent(
 		"show:__imageurl2 width='50' height='50'__",
 		"show:~~",
 		"noecho"
-	); 
-	 
-	
+	);
+
+
 	$prearray = explode("~~",$string);
-	
-	for ($i=0; $i <count($prearray)-1; $i++) { 
+
+	for ($i=0; $i <count($prearray)-1; $i++) {
 		 $outarray[$i] = explode("||",$prearray[$i]);
     }
     $i = 0;
 	foreach ($outarray as $key => $value) {
-	
+
 	     preg_match_all('/(src)=("[^"]*")/i',$value[9],$parts);
 	     $type;
 	     $media_id = substr($parts[0][0],5,-1);
@@ -122,7 +122,7 @@ $string = getContent(
 	     }else if($posvm !==false){
 	         $type = "vimeo";
 	     }
-	     
+
 	     $nodes[$i] = array(
 		    title => $value[0],
 		    image => $value[1],
@@ -137,16 +137,16 @@ $string = getContent(
 		        type => $type,
 		        media_id => $media_id,
 		        code => $value[9]
-		    ), 
+		    ),
 		    thmb => $value[10]
 		    );
 		    $i++;
 	}
-	
-	$totalpossible = getContent(  
+
+	$totalpossible = getContent(
 	  "articles",
 	  "display:list",
-	  "order:".$order, 
+	  "order:".$order,
 	  "find_category:".$category,
 	  "find_series:".$series,
 	  "find_group:".$group,
@@ -155,31 +155,31 @@ $string = getContent(
 	  "find_author:".$author,
 	  "find_tag:".$tags,
 	  "hide_series:".$hideseries,
-	  "hide_category:".$hidecategory, 
-	  "hide_group:".$hidegroup, 
+	  "hide_category:".$hidecategory,
+	  "hide_group:".$hidegroup,
 	  "before_show:__totalpossible__",
 	  "noecho"
-	); 
-	
-	
-	$output = array( 
+	);
+
+
+	$output = array(
 	  items => $nodes,
 	  total => intval($totalpossible)
 	);
-	
+
 	//$output = array("items" => $nodes);
-	
+
 	$json = json_encode($output);
-	//print_r($articles); 
-	
+	//print_r($articles);
+
 	 $callback = $_REQUEST['callback'];
-	 
+
 	 if($callback){
 	     header('Content-type: text/javascript');
 	     echo $callback . '(' . $json . ');';
 	 }else{
 	     header('Content-type: application/json');
-	     echo $json; 
+	     echo $json;
 	 }
-	
+
 ?>
