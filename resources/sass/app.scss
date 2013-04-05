@@ -1,32 +1,62 @@
 @import 'sencha-touch/default/all';
 
-// You may remove any of the following modules that you
-// do not use in order to create a smaller css file.
+/*------------------------------------*\
+    $DEFAULT COLORS & STYLING
+\*------------------------------------*/
 
 $accent-color-one: #262729;
 $base-gradient: 'matte'; /* matte, bevel, glossy, recessed, or flat */
 
-$list-item-color: #eeeeee;
+
+/*------------------------------------*\
+    $TITLE BAR COLORS
+\*------------------------------------*/
+
 $back-button-color: #333333;
-$tab-bar-color:#262626;
-$tab-icon-color:#ffffff;
-$tab-icon-background-color:#000000;
 $title-bar-background-color:#384855;
-$date-background-color:#7B3A50;
+
+
+/*------------------------------------*\
+    $MESSAGE BOX COLORS
+\*------------------------------------*/
+
+$message-box-border-color: #384855;
+$message-box-text-color: #384855;
+$message-box-action-button-text-color: #ffffff;
+$message-box-action-button-color: #384855;
+$message-box-background-color: #ffffff;
+
+
+/*------------------------------------*\
+    $BASE COLORS
+\*------------------------------------*/
 
 $grey: #666666;
 $light-color:#3f4346;
 $light-blue: #9bc0f4;
 $white: #fff;
 
-// Lists
+
+/*------------------------------------*\
+    $LIST COLORS
+\*------------------------------------*/
+
+$date-background-color:#7B3A50;
+$list-item-color: #eeeeee;
 $list-active-color: $list-item-color;
 $list-active-gradient: 'flat'; /* matte, bevel, glossy, recessed, or flat */
 $list-pressed-color: $list-item-color;
 $list-header-bg-color: transparentize(saturate($base-color, 10%), .5);
 $list-header-gradient: 'matte';
 
-// Tabs
+
+/*------------------------------------*\
+    $TABBAR DEFULT STYLING
+\*------------------------------------*/
+
+$tab-bar-color:#262626;
+$tab-icon-color:#ffffff;
+$tab-icon-background-color:#000000;
 
 $tabs-dark: $tab-bar-color;
 $tabs-light: $tab-bar-color;
@@ -39,26 +69,46 @@ $tabs-bottom-active-gradient: 'recessed';
 $toolbar-gradient: 'matte';
 $include-default-icons:false;
 
+
+/*------------------------------------*\
+    $MISCELLANEOUS
+\*------------------------------------*/
+
 $textshadow:1px 1px 1px #fff;
 
+
+/*------------------------------------*\
+    $IMPORTS & INCLUDES
+\*------------------------------------*/
+
+// You may remove any of the following modules that you
+// do not use in order to create a smaller css file.
+
 @import "compass/css3/border-radius";
-@import "compass/css3/box-shadow"; 
+@import "compass/css3/box-shadow";
 
 @include sencha-panel;
 @include sencha-buttons;
 @include sencha-tabs;
 @include sencha-toolbar;
 @include sencha-indexbar;
-@include sencha-list; 
+@include sencha-list;
 @include sencha-layout;
-@include sencha-sheet; 
+@include sencha-sheet;
 @include sencha-msgbox;
-@include sencha-carousel; 
+@include sencha-carousel;
 @include sencha-list-paging;
 @include sencha-form;
-@include sencha-loading-spinner; 
+@include sencha-loading-spinner;
 
-//pictos custom icons
+
+
+
+
+/*------------------------------------*\
+    $ICON INCLUDES
+\*------------------------------------*/
+
 @include pictos-iconmask('calendar');
 @include pictos-iconmask('doc_list');
 @include pictos-iconmask('doc2');
@@ -67,8 +117,8 @@ $textshadow:1px 1px 1px #fff;
 @include pictos-iconmask('headphones');
 @include pictos-iconmask('compass1');
 @include pictos-iconmask('photo3');
-@include pictos-iconmask('time'); 
-@include pictos-iconmask('home'); 
+@include pictos-iconmask('time');
+@include pictos-iconmask('home');
 @include pictos-iconmask('locate');
 @include pictos-iconmask('video');
 
@@ -76,6 +126,12 @@ $textshadow:1px 1px 1px #fff;
 body{
   background-color:#000000;
 }
+
+
+/*------------------------------------*\
+    $SWIPE TRAINER
+\*------------------------------------*/
+
 #trainer{
   @include background-gradient($tab-bar-color,matte);
   .x-innerhtml p{
@@ -106,6 +162,11 @@ body{
   @include background-gradient($accent-color-one,recessed);
 }
 
+
+/*------------------------------------*\
+    $BACK BUTTON
+\*------------------------------------*/
+
 .x-button-back .x-button-label {
     color: #fff;
 }
@@ -118,11 +179,26 @@ body{
 .x-toolbar-dark .x-button.x-button-pressing::after{
   @include background-gradient($back-button-color,recessed);
 }
+
+
+
+
+/*------------------------------------*\
+    $TOOLBAR
+\*------------------------------------*/
 .x-toolbar-dark{
   color: saturate(lighten($tab-icon-color, 10%), 1%);
   text-shadow: rgba(#000, .8) 0 1px 1px;
   @include background-gradient($title-bar-background-color,matte);
 }
+
+
+
+
+/*------------------------------------*\
+    $TABBAR
+\*------------------------------------*/
+
 .x-tabbar-dark.x-docked-bottom .x-tab-active .x-button-icon{
   background: white none !important;
   -webkit-box-shadow: rgba($tab-bar-color, .8) 0 0 1px !important;
@@ -131,7 +207,7 @@ body{
 .x-tabbar.x-docked-bottom .x-tab {
     &.x-tab-active{
         -webkit-box-shadow: inset rgba($tab-bar-color, .8) 0 0 3px !important;
-    }    
+    }
 }
 .x-tabbar.x-docked-bottom .x-tab.x-tab-pressed{
   -webkit-border-radius:0px;
@@ -143,13 +219,20 @@ body{
   background-image:-webkit-linear-gradient(top, #010101,#0D0E0F 10%,#1A1A1C 65%,#1B1C1D);
 }
 
-
 .x-tabbar-dark.x-docked-bottom .x-tab-active{
   -webkit-border-radius:0px;
   border-radius:0px;
   padding-top:8px;
   padding-bottom:5px;
 }
+
+
+
+
+/*------------------------------------*\
+    $LIST ITEMS
+\*------------------------------------*/
+
 .x-list-item-label{
   overflow:hidden;
   div.avatar{
@@ -170,7 +253,7 @@ body{
     padding-left: 5px;
     padding-right:5px;
     padding-top:3px;
-    font-weight:bold;     
+    font-weight:bold;
      @include border-radius(3px,3px);
     .month{
        display:block;
@@ -188,6 +271,13 @@ body{
   }
 }
 
+
+
+
+/*------------------------------------*\
+    $LIST PAGING
+\*------------------------------------*/
+
 .x-list-paging{
   @include background-gradient(#dddddd,matte);
   .x-list-paging-msg{
@@ -198,8 +288,41 @@ body{
   }
 }
 
+
+
+
+
+
+/*------------------------------------*\
+    $MESSAGE BOX
+\*------------------------------------*/
+
+.x-msgbox{
+  border-color: $message-box-border-color;
+}
+
+.x-msgbox-dark .x-msgbox-text{
+  color: $message-box-text-color;
+}
+
+.x-toolbar.x-msgbox-buttons .x-button.x-button-action{
+  color: $message-box-action-button-text-color;
+  @include background-gradient( $message-box-action-button-color,matte );
+}
+
+.x-panel.x-floating, .x-msgbox{
+  background-color: $message-box-background-color;
+}
+
+
+
+
+/*------------------------------------*\
+    $LATEST MEDIA LAYOUT
+\*------------------------------------*/
+
 .latest{
-  .media-wrap{ 
+  .media-wrap{
     position:relative;
       width:320px;
     height:150px;
@@ -238,6 +361,13 @@ body{
     color:$grey;
   }
 }
+
+
+
+
+/*------------------------------------*\
+    $PHOTO GRID
+\*------------------------------------*/
 
 .grid{
  overflow:hidden;
@@ -285,13 +415,20 @@ a.mediaplay:active{
 
 }
 
+
+
+
+/*------------------------------------*\
+    $INNERHTML OVERRIDES
+\*------------------------------------*/
+
 .x-innerhtml.x-html{
   h2{
     text-shadow:$textshadow;
     margin-bottom:.25em;
   }
   h3{
-    
+
   }
   h4{
     color:#333;
@@ -310,7 +447,7 @@ a.mediaplay:active{
   p{
     font-size:1.1em;
   }
-  
+
 }
 
 
