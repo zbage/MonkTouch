@@ -200,7 +200,7 @@ body{
 \*------------------------------------*/
 
 .x-tabbar-dark.x-docked-bottom .x-tab-active .x-button-icon{
-  background: white none !important;
+  background: $tab-icon-color none !important;
   -webkit-box-shadow: rgba($tab-bar-color, .8) 0 0 1px !important;
 }
 
