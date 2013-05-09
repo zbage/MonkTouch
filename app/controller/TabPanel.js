@@ -1,10 +1,12 @@
 Ext.define('MonkTouch.controller.TabPanel',{
   extend: 'Ext.app.Controller',
+
   requires:[
     'MonkTouch.view.NavView',
     'MonkTouch.view.Section',
     'MonkTouch.view.GalleryView'
   ],
+
   config: {
     refs:{
       tabpanel:'tabpanel'
@@ -16,7 +18,9 @@ Ext.define('MonkTouch.controller.TabPanel',{
       }
     }
   },
+
   tabPanelShow:function(tp){
+
     var main = tp.getActiveItem(),
         config = main.getInitialConfig(),
         tb = Ext.ComponentQuery.query('#ext-tabbar-1')[0];
@@ -28,7 +32,7 @@ Ext.define('MonkTouch.controller.TabPanel',{
         storeName:config.storeName.capitalize(),
         filters:config.filters,
         title:config.title
-      }]); 
+      }]);
     }else if(config.view === 'section'){
      main.add({
        xtype:config.view, //this is section
@@ -46,6 +50,8 @@ Ext.define('MonkTouch.controller.TabPanel',{
         title:config.title
       }]);
     }
+
+    // Set Active Tab
     MonkTouch.setup.setActiveTab(main);
 
     //swipe tooltip
@@ -75,7 +81,7 @@ Ext.define('MonkTouch.controller.TabPanel',{
             }
           },
           items:[
-            { 
+            {
               xtype:'button',
               id:'trainer-dismiss',
               text:'x',
@@ -104,14 +110,15 @@ Ext.define('MonkTouch.controller.TabPanel',{
       }
     }
   },
+
   onTabChange:function(a,b,c){
-    
+
     var main = b,
         config = main.getInitialConfig(),
-        prevmain = c;    
+        prevmain = c;
     if(config.view === 'navview'){
       //if navview has list we don't need to load it again
-        if(main.getInnerItems().length < 1){ 
+        if(main.getInnerItems().length < 1){
           main.setItems([{
             xtype:config.view,
             firstView:'listitems',
@@ -123,7 +130,7 @@ Ext.define('MonkTouch.controller.TabPanel',{
           }]);
         }
     }else if(config.view === 'section'){
-      if(main.getInnerItems().length < 1){ 
+      if(main.getInnerItems().length < 1){
          main.add({
            xtype:config.view,
            title:config.title,
@@ -132,7 +139,7 @@ Ext.define('MonkTouch.controller.TabPanel',{
          });
       }
     }else if(config.view === 'galleryview'){
-      if(main.getInnerItems().length < 1){ 
+      if(main.getInnerItems().length < 1){
         main.setItems([{
           xtype:config.view,
           firstView:'listitems',
@@ -141,30 +148,30 @@ Ext.define('MonkTouch.controller.TabPanel',{
           //filters:main.filters,
           title:config.title
         }]);
-      } 
+      }
     }else if(config.view === 'link'){
       Ext.Msg.confirm("Confirmation", "Do you want to leave the site?", function(e){
         if(e === 'yes'){
           var url = config.filters.href;
           if(config.title.toLowerCase() === "home" || config.title.toLowerCase() === "site" || url === "/"){
-            function setStorage(str,val){  
+            function setStorage(str,val){
               if (typeof(localStorage) != 'undefined' ) {
-                try { 
+                try {
                   localStorage.setItem(str, val); //saves to the database, "key", "value"
-                } catch (e) { 
+                } catch (e) {
                   //window.console.log("localStorage Error");
                   if (e == QUOTA_EXCEEDED_ERR) {
                     //window.console.log("Quota Exceeded");
-                  }   
-                }   
-              } 
+                  }
+                }
+              }
             }
             function clearStorage(str){
-               if (typeof(localStorage) != 'undefined' ) { 
+               if (typeof(localStorage) != 'undefined' ) {
                 localStorage.setItem(str,"");
                }
             }
-            setStorage("redirectmobile","off");    
+            setStorage("redirectmobile","off");
           }
           window.location = url;
         }

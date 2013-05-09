@@ -25,7 +25,8 @@ Ext.define('MonkTouch.controller.NavView',{
       }
     }
   },
-  onItemTap:function(list, index, node, record){ 
+  onItemTap:function(list, index, node, record){
+
     if(list.config.storeName === "Galleries"){
       var main = this.getTabpanel().getActiveItem().down('galleryview');
       var slug = record.data.slug;
@@ -49,6 +50,7 @@ Ext.define('MonkTouch.controller.NavView',{
       });
     }
   },
+
   onMediaPlay:function(e){
     e.preventDefault();
     e.stopPropagation();
@@ -66,7 +68,7 @@ Ext.define('MonkTouch.controller.NavView',{
         if(audiourl != ""){
           e.preventDefault();
           e.stopPropagation();
-          
+
           main.push({
             title:title,
             xtype:'audioplayer',
@@ -77,25 +79,26 @@ Ext.define('MonkTouch.controller.NavView',{
       if(hasClass(btn,'video')){
         if(videourl !=""){
           main.push({
-            title:title,
-            xtype:'video',
-            url:videourl,
-            posterUrl:posterimg ? posterimg : MonkTouch.setup.getBasePath() + "/resources/images/default-poster-image.jpg"
+            title: title,
+            xtype: 'video',
+            url: videourl,
+            posterUrl: posterimg ? posterimg : MonkTouch.setup.getBasePath() + "/resources/images/default-poster-image.jpg"
           });
         }
       }
   },
+
   onPhotoTap:function(list, index, node, record){
     var main = this.getTabpanel().getActiveItem().down('galleryview'),
         items = [],
         carousel;
-        
+
     list.getStore().each(function(obj){
-		var item = new Ext.Template( 
+		var item = new Ext.Template(
 				'<div class="photo" style="display:block, width:100%,height:inherit, position:relative"><img src="{photo}" style="width:100%"/></div>',
 				{compile:true}
 			);
-      //vbox with panel above and below with flex 1 allows for vertically centered image 
+      //vbox with panel above and below with flex 1 allows for vertically centered image
 			items.push({
         xtype:'container',//'container',
         layout:{
@@ -131,7 +134,7 @@ Ext.define('MonkTouch.controller.NavView',{
       },
       direction:'horizontal',
       flex:1
-          
+
     });
   }
 });

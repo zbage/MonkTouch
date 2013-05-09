@@ -1,5 +1,5 @@
 Ext.define('MonkTouch.view.PhotoGrid', {
-    extend : 'Ext.DataView',
+    extend : 'Ext.dataview.DataView',
     xtype  : 'photogrid',
     constructor : function(config) {
      var store = Ext.getStore(config.storeName),
@@ -10,7 +10,7 @@ Ext.define('MonkTouch.view.PhotoGrid', {
       Ext.apply(config, {
          store : store,
          cls:'grid',
-         itemTpl: '<div class="thumbwrap main-image" data-gallery="'+slug+'"><img src="{thumb}" width="100"/></div>'    
+         itemTpl: '<div class="thumbwrap main-image" data-gallery="'+slug+'"><img src="{thumb}" width="100"/></div>'
       });
 
       store.load(); //can't auto load or filters won't work

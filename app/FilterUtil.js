@@ -1,6 +1,9 @@
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
 Ext.define('MonkTouch.FilterUtil',{
     //creates instance upon load
-    singleton: true,  
+    singleton: true,
     getFilters:function(items){
 		var obj = [];
 		if(items === null || items === undefined){
@@ -183,11 +186,11 @@ Ext.define('MonkTouch.FilterUtil',{
 				)
 			}
 
-			
+
     //***//
 		}
 		return obj;
 	}
 });
- 
+
 

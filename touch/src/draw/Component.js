@@ -51,7 +51,7 @@ Ext.define('Ext.draw.Component', {
     ],
     engine: 'Ext.draw.engine.Canvas',
     statics: {
-        WATERMARK: 'Powered by <span style="color:#22E962; font-weight: 900">Sencha Touch</span> <span style="color:#75cdff; font-weight: 900">GPL</span>'
+        WATERMARK: 'Powered by <span style="color:#22E962; font-weight: 900">Sencha Touch</span> <span style="color:#75cdff; font-weight: 900">GPLv3</span>'
     },
     config: {
         cls: 'x-draw-component',
@@ -143,7 +143,8 @@ Ext.define('Ext.draw.Component', {
                         {
                             reference: 'watermarkElement',
                             cls: 'x-chart-watermark',
-                            html: Ext.draw.Component.WATERMARK
+                            html: Ext.draw.Component.WATERMARK,
+                            style: Ext.draw.Component.WATERMARK ? '': 'display: none'
                         }
                     ]
                 }
@@ -159,6 +160,7 @@ Ext.define('Ext.draw.Component', {
 
     /**
      * @protected
+     * Place water mark after resize.
      */
     onPlaceWatermark: function () {
         // Do nothing
@@ -269,7 +271,7 @@ Ext.define('Ext.draw.Component', {
 }, function () {
     if (location.search.match('svg')) {
         Ext.draw.Component.prototype.engine = 'Ext.draw.engine.Svg';
-    } else if (Ext.os.is.Android4 && !Ext.browser.is.Chrome && Ext.os.version.getMinor() === 1) {
+    } else if ((Ext.os.is.BlackBerry && Ext.os.version.getMajor() === 10) || (Ext.browser.is.AndroidStock4 && (Ext.os.version.getMinor() === 1 || Ext.os.version.getMinor() === 2))) {
         // http://code.google.com/p/android/issues/detail?id=37529
         Ext.draw.Component.prototype.engine = 'Ext.draw.engine.Svg';
     }

@@ -20,10 +20,10 @@ Ext.define("Ext.chart.series.sprite.Scatter", {
             dx = matrix.getDX(),
             dy = matrix.getDY(),
             markerCfg = {},
-            left = clipRegion[0],
-            right = clipRegion[0] + clipRegion[2],
-            top = clipRegion[1],
-            bottom = clipRegion[1] + clipRegion[3],
+            left = clipRegion[0] - xx,
+            right = clipRegion[0] + clipRegion[2] + xx,
+            top = clipRegion[1] - yy,
+            bottom = clipRegion[1] + clipRegion[3] + yy,
             x, y;
         for (var i = 0; i < dataX.length; i++) {
             x = dataX[i];
@@ -32,7 +32,7 @@ Ext.define("Ext.chart.series.sprite.Scatter", {
             y = y * yy + dy;
             if (left <= x && x <= right && top <= y && y <= bottom) {
                 if (attr.renderer) {
-                    attr.renderer.call(this, markerCfg, this, i, this.getDataItems().items[i]);
+                    attr.renderer.call(this, this, markerCfg, {store:this.getStore()}, i);
                 }
                 markerCfg.translationX = x;
                 markerCfg.translationY = y;

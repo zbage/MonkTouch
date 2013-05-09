@@ -1,17 +1,17 @@
 Ext.define('MonkTouch.setup',{
     singleton: true, //don't worry about this.
     activeTab:0, //initial tab for application to show
-    basePath:'',
+    basePath:'http://randlett.net',
     tabs:[
 
         {
             title   : 'Media',
             view   : 'navview',
-            iconCls : 'headphones',
+            iconCls : 'audio',
             storeName   : 'sermons',
             filters : {
     		      //hide_series:'job-an-audience-with-god'
-              
+
             },
             contentTpl:{
               list: 'defaultList',
@@ -23,7 +23,7 @@ Ext.define('MonkTouch.setup',{
         {
             title   : 'Media2',
             view   : 'navview',
-            iconCls : 'headphones',
+            iconCls : 'audio',
             storeName   : 'Sermons',
             filters : {
     		      hide_series:'job-an-audience-with-god'
@@ -37,7 +37,7 @@ Ext.define('MonkTouch.setup',{
         },
         {
             title   : 'Articles',
-            iconCls : 'list',
+            iconCls : 'doc',
             view   : 'navview',
             storeName   : 'articles',
             filters : {
@@ -49,11 +49,11 @@ Ext.define('MonkTouch.setup',{
             },
             xtype:'panel',
             layout:'fit'
-            
+
         },
         {
             title   : 'Blogs',
-            iconCls : 'doc_list',
+            iconCls : 'news',
             view   : 'navview',
             storeName   : 'Blogs',
             filters : {
@@ -66,7 +66,7 @@ Ext.define('MonkTouch.setup',{
             },
             xtype:'panel',
             layout:'fit'
-            
+
         },
         {
             title   : 'Events',
@@ -85,7 +85,7 @@ Ext.define('MonkTouch.setup',{
         },
         {
             title   : 'Directions',
-            iconCls : 'doc2',
+            iconCls : 'locate',
             view   : 'section',
             storeName  : 'Section',
             filters : {
@@ -96,11 +96,11 @@ Ext.define('MonkTouch.setup',{
             },
             xtype:'panel',
             layout:'fit'
-            
+
         },
         {
             title   : 'Contact',
-            iconCls : 'doc2',
+            iconCls : 'mail',
             view   : 'section',
             storeName  : 'Section',
             filters : {
@@ -111,11 +111,11 @@ Ext.define('MonkTouch.setup',{
             },
             xtype:'panel',
             layout:'fit'
-            
+
         },
         {
             title   : 'Photos',
-            iconCls : 'photo3',
+            iconCls : 'photo',
             view   : 'galleryview',
             storeName  : 'Galleries',
             filters : {
@@ -125,7 +125,7 @@ Ext.define('MonkTouch.setup',{
             },
             xtype:'panel',
             layout:'fit'
-            
+
         },
         {
             title   : 'Home',
@@ -134,7 +134,7 @@ Ext.define('MonkTouch.setup',{
             filters : {
               href:'http://www.monkdev.com'
             }
-        } 
+        }
     ],
     setActiveTab:function(idx){
         this.activeTab = idx;
@@ -146,7 +146,7 @@ Ext.define('MonkTouch.setup',{
 
 Ext.define('MonkTouch.templates',{
     //creates instance upon load
-    singleton: true,  
+    singleton: true,
     items:{
         defaultList     : "{title}",
         defaultDetail   : "<h2>{title}</h2> {text}",
@@ -156,7 +156,7 @@ Ext.define('MonkTouch.templates',{
         sermonDetail    : '<h2>{title}</h2><h4>{date} <tpl if="author"><span>by {author}</span></tpl></h4><p class="passage">{passage}</p><p><tpl if="audio"><a data-audio="{audio}" title="{title}" class="mediaplay audio">Listen</a></tpl><tpl if="video"><a data-video="{video}" <tpl if="image">data-image="{image}"</tpl> title="{title}" class="mediaplay video">Watch</a></tpl></p><p>{text}</p>',
         embedVideoDetail: '<tpl if="video"><video src="{video}" width="100%" poster="{image}"/></tpl><tpl if="embedsrc"><div class="vidembed" style="width:100%;"><iframe class="youtube-player" style="max-width:100%;" type="text/html" wmode="opaque" frameborder="0" src="{embedsrc}" width="100%"  webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div></tpl><h2>{title}</h2><h4>{date}</h4>{text}',
         articleList     : "<strong>{title}</strong><p class='subline'>{date}</p>",
-        eventList       : '<div class="date"><span class="month">{month}</span><span class="day">{day}</span></div> {title}<tpl if="locname" <p class="subline">@ {locname}</p></tpl>',
+        eventList       : '<div class="date"><span class="day">{day}</span><span class="month">{month}</span></div> <div class="title">{title}</div><tpl if="locname" <p class="subline">@ {locname}</p></tpl>',
         imageList       : '<div class="avatar" <tpl if="thmb"> style="background-image: url({thmb}); width:50px; height:50px; overflow:hidden; display:block; float:left; margin-right:10px;"</tpl>></div><span class="name">{title}</span>',
         galleryList     : '<div class="avatar" <tpl if="thmb"> style="background-image: url({thmb}); width:50px; height:50px; overflow:hidden; display:block; float:left; margin-right:10px;"</tpl>></div><span class="name">{title}<p class="subline"><span class="imgnumber">{number}</span> images</p></span>'
     },
@@ -165,5 +165,5 @@ Ext.define('MonkTouch.templates',{
     }
 });
 
- 
+
 

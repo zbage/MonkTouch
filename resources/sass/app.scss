@@ -1,19 +1,46 @@
-@import 'sencha-touch/default/all';
+// The following two lines import the default Sencha Touch theme. If you are building
+// a new theme, remove them and the add your own CSS on top of the base CSS (which
+// is already included in your app.json file).
+
+/*------------------------------------*\
+    $IMPORTS & INCLUDES
+\*------------------------------------*/
+
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+
+@import 'sencha-touch/default';
+@import 'sencha-touch/default/mixins/Class';
+@import 'sencha-touch/default/src/Button';
+@import 'sencha-touch/default/src/Panel';
+@import 'sencha-touch/default/src/MessageBox';
+@import 'sencha-touch/default/src/Toolbar';
+@import 'sencha-touch/default/src/tab/Panel';
+@import 'sencha-touch/default/src/dataview/IndexBar';
+@import 'sencha-touch/default/src/dataview/List';
+@import 'sencha-touch/default/src/Sheet';
+@import 'sencha-touch/default/src/carousel/Carousel';
+@import 'sencha-touch/default/src/plugin/ListPaging';
+
+@include icon-font('Pictos', inline-font-files('pictos/pictos-web.woff', woff, 'pictos/pictos-web.ttf', truetype,'pictos/pictos-web.svg', svg));
+
 
 /*------------------------------------*\
     $DEFAULT COLORS & STYLING
 \*------------------------------------*/
 
-$accent-color-one: #262729;
-$base-gradient: 'matte'; /* matte, bevel, glossy, recessed, or flat */
+$accent-color-one: #8B483F;
+$base-gradient: 'matte'; /* matte, bevel, glossy, recessed, or linear */
 
 
 /*------------------------------------*\
     $TITLE BAR COLORS
 \*------------------------------------*/
 
-$back-button-color: #333333;
-$title-bar-background-color:#384855;
+$back-button-color: #122B4F;
+$title-bar-font-color: #ffffff;
+$title-bar-background-color: #3B66A2;
+$title-bar-gradient-type: 'linear';
 
 
 /*------------------------------------*\
@@ -32,7 +59,7 @@ $message-box-background-color: #ffffff;
 \*------------------------------------*/
 
 $grey: #666666;
-$light-color:#3f4346;
+$light-color: #3f4346;
 $light-blue: #9bc0f4;
 $white: #fff;
 
@@ -41,10 +68,10 @@ $white: #fff;
     $LIST COLORS
 \*------------------------------------*/
 
-$date-background-color:#7B3A50;
+$date-background-color:#8B483F;
 $list-item-color: #eeeeee;
-$list-active-color: $list-item-color;
-$list-active-gradient: 'flat'; /* matte, bevel, glossy, recessed, or flat */
+$list-active-color: #8BAEE4;
+$list-active-gradient-type: 'linear'; /* matte, bevel, glossy, recessed, or linear */
 $list-pressed-color: $list-item-color;
 $list-header-bg-color: transparentize(saturate($base-color, 10%), .5);
 $list-header-gradient: 'matte';
@@ -54,112 +81,91 @@ $list-header-gradient: 'matte';
     $TABBAR DEFULT STYLING
 \*------------------------------------*/
 
-$tab-bar-color:#262626;
-$tab-icon-color:#ffffff;
-$tab-icon-background-color:#000000;
 
-$tabs-dark: $tab-bar-color;
-$tabs-light: $tab-bar-color;
+$tab-icon-color: #666666;
+$tab-icon-active-color: #ffffff;
+$tab-icon-background-color: #000000;
+
+$tabbar-color: #262626;
+$tabbar-tab-pressed-color: #111111;
+$tabbar-tab-pressed-gradient-type: 'linear';
+$tabbar-tab-active-color: #3B66A2;
+$tabbar-gradient-type: 'linear';
 
 $tabs-bottom-radius: .4em;
 $tabs-bottom-gradient: 'bevel';
-$tabs-bar-gradient: 'matte';
-$tabs-bottom-active-gradient: 'recessed';
-
-$toolbar-gradient: 'matte';
-$include-default-icons:false;
 
 
 /*------------------------------------*\
     $MISCELLANEOUS
 \*------------------------------------*/
 
-$textshadow:1px 1px 1px #fff;
-
-
-/*------------------------------------*\
-    $IMPORTS & INCLUDES
-\*------------------------------------*/
-
-// You may remove any of the following modules that you
-// do not use in order to create a smaller css file.
-
-@import "compass/css3/border-radius";
-@import "compass/css3/box-shadow";
-
-@include sencha-panel;
-@include sencha-buttons;
-@include sencha-tabs;
-@include sencha-toolbar;
-@include sencha-indexbar;
-@include sencha-list;
-@include sencha-layout;
-@include sencha-sheet;
-@include sencha-msgbox;
-@include sencha-carousel;
-@include sencha-list-paging;
-@include sencha-form;
-@include sencha-loading-spinner;
-
-
-
+$textshadow: 1px 1px 1px #fff;
 
 
 /*------------------------------------*\
     $ICON INCLUDES
 \*------------------------------------*/
 
-@include pictos-iconmask('calendar');
-@include pictos-iconmask('doc_list');
-@include pictos-iconmask('doc2');
-@include pictos-iconmask('info_plain2');
-@include pictos-iconmask('list');
-@include pictos-iconmask('headphones');
-@include pictos-iconmask('compass1');
-@include pictos-iconmask('photo3');
-@include pictos-iconmask('time');
-@include pictos-iconmask('home');
-@include pictos-iconmask('locate');
-@include pictos-iconmask('video');
+// -- available built-in fonts are here: http://pictos.cc/font/
 
-//edit below this line with caution
+@include icon("calendar", "\\");
+@include icon("doc_list", "n");
+@include icon("news", "N");
+@include icon("doc", "F");
+@include icon("info", "i");
+@include icon("list", "l");
+@include icon("audio","f");
+@include icon("compass", "G");
+@include icon("photo", "P");
+@include icon("time", "t");
+@include icon("home", "H");
+@include icon("locate", "@");
+@include icon("video", "V");
+@include icon("mail", "M");
+
+
+
+
+
+/* ------------------------------- Edit below this line with caution -------------------------*/
+
 body{
-  background-color:#000000;
+  background-color: #000000;
 }
-
 
 /*------------------------------------*\
     $SWIPE TRAINER
 \*------------------------------------*/
 
 #trainer{
-  @include background-gradient($tab-bar-color,matte);
+  @include background-gradient($tabbar-color,matte);
   .x-innerhtml p{
-    text-align:center;
-    font-weight:bold !important;
-    margin-bottom:0px;
+    text-align: center;
+    font-weight: bold !important;
+    margin-bottom: 0px;
     text-shadow: -1px -1px 1px #000000;
     z-index: 1000;
-    color:#eeeeee;
+    color: #eeeeee;
   }
   .x-panel-inner , .x-body{
-    background-color:transparent !important;
-    color:#fefefe;
+    background-color: transparent !important;
+    color: #fefefe;
   }
 }
 #trainer-dismiss{
-  color:#ffffff !important;
-  @include background-gradient($accent-color-one,matte);
+  color: #ffffff !important;
+  @include background-gradient($accent-color-one, matte);
   border:none;
 }
 #trainer-dismiss .x-button-label{
-    line-height:15px;
-    color:#ffffff !important;
+    line-height: 15px;
+    color: #ffffff !important;
     text-shadow: -1px -1px 1px #444;
-    margin-top:-3px;
+    margin-top: -3px;
 }
 #trainer-dismiss.x-button-pressing{
-  @include background-gradient($accent-color-one,recessed);
+  @include background-gradient($accent-color-one, recessed);
 }
 
 
@@ -172,12 +178,12 @@ body{
 }
 .x-toolbar-dark .x-button,
 .x-toolbar-dark .x-button.x-button-back::after{
-  @include background-gradient($back-button-color,bevel);
+  @include background-gradient($back-button-color, linear);
 }
 
 .x-toolbar-dark .x-button.x-button-pressing,
 .x-toolbar-dark .x-button.x-button-pressing::after{
-  @include background-gradient($back-button-color,recessed);
+  @include background-gradient($back-button-color, recessed);
 }
 
 
@@ -186,10 +192,10 @@ body{
 /*------------------------------------*\
     $TOOLBAR
 \*------------------------------------*/
-.x-toolbar-dark{
-  color: saturate(lighten($tab-icon-color, 10%), 1%);
+.x-toolbar{
+  color: saturate(lighten($title-bar-font-color, 10%), 1%);
   text-shadow: rgba(#000, .8) 0 1px 1px;
-  @include background-gradient($title-bar-background-color,matte);
+  @include background-gradient($title-bar-background-color, $title-bar-gradient-type);
 }
 
 
@@ -199,31 +205,49 @@ body{
     $TABBAR
 \*------------------------------------*/
 
-.x-tabbar-dark.x-docked-bottom .x-tab-active .x-button-icon{
-  background: $tab-icon-color none !important;
-  -webkit-box-shadow: rgba($tab-bar-color, .8) 0 0 1px !important;
+.x-tabbar{
+  color: saturate(lighten($tab-icon-color, 10%), 1%);
+  text-shadow: rgba(#000, .8) 0 1px 1px;
+  @include background-gradient($tabbar-color, $tabbar-gradient-type);
+}
+
+.x-tab{
+  color: $tab-icon-color !important;
+}
+
+.x-tab-active .x-button-icon:before,
+.x-tab-active .x-button-label{
+  color: $tab-icon-active-color !important;
+}
+
+.x-tab .x-button-icon:before{
+  text-shadow: 0 1px 2px #000;
+  -webkit-text-stroke: $tab-icon-color;
 }
 
 .x-tabbar.x-docked-bottom .x-tab {
     &.x-tab-active{
-        -webkit-box-shadow: inset rgba($tab-bar-color, .8) 0 0 3px !important;
+        box-shadow: inset rgba($tabbar-color, .8) 0 0 3px !important;
     }
 }
+
 .x-tabbar.x-docked-bottom .x-tab.x-tab-pressed{
   -webkit-border-radius:0px;
   border-radius:0px;
   padding-top:8px;
   padding-bottom:5px;
-  background-color:#1A1A1C;
-  background-image:-webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #010101), color-stop(10%, #0D0E0F), color-stop(65%, #1A1A1C), color-stop(100%, #1B1C1D));
-  background-image:-webkit-linear-gradient(top, #010101,#0D0E0F 10%,#1A1A1C 65%,#1B1C1D);
+
+  @include background-gradient($tabbar-tab-pressed-color,$tabbar-tab-pressed-gradient-type);
 }
 
-.x-tabbar-dark.x-docked-bottom .x-tab-active{
+.x-tabbar-dark.x-docked-bottom .x-tab-active,
+.x-tab-active{
   -webkit-border-radius:0px;
   border-radius:0px;
   padding-top:8px;
   padding-bottom:5px;
+
+  @include background-gradient($tabbar-tab-active-color, 'matte', top, 2);
 }
 
 
@@ -239,35 +263,57 @@ body{
     display:inline-block;
   }
 }
-.x-list-item{
-  .subline{
-    font-size:12px !important;
-    color:$grey !important;
+
+
+.x-list{
+  .x-list-item{
+    overflow: hidden;
+    .subline{
+      font-size:12px !important;
+      color:$grey !important;
+    }
+    .title{
+      padding-right: 50px;
+    }
+    .date{
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      margin-top: -19px;
+      margin-left: 12px;
+      //background-color: $date-background-color;
+      text-align:center;
+      //@include border-radius(3px,3px);
+      .month{
+        display: block;
+        color: $accent-color-one;
+        text-transform: uppercase;
+        font-size: 14px !important;
+        font-weight: 800;
+        line-height: 1em;
+      }
+      .day{
+         color: #414141;
+         font-size: 26px  !important;
+         line-height: 1em;
+         font-weight: 100;
+      }
+    }
   }
-  .date{
-    display:block;
-    float:left;
-    margin-right:10px;
-    background-color:$date-background-color;
-    text-align:center;
-    padding-left: 5px;
-    padding-right:5px;
-    padding-top:3px;
-    font-weight:bold;
-     @include border-radius(3px,3px);
-    .month{
-       display:block;
-      color:$white;
-      text-transform:uppercase;
-      font-size:11px !important;
-      line-height:1em;
-    }
-    .day{
-       color:$white;
-       font-size:17px  !important;
-       line-height:1em;
-       font-weight:normal;
-    }
+
+  .x-list-item.x-item-selected.x-list-item-tpl{
+    @include background-gradient($list-active-color, $list-active-gradient-type);
+    border-top-color: darken($list-active-color, 3%) !important;
+  }
+
+  .x-list-item.x-item-selected.x-list-item-tpl .x-innerhtml{
+    text-shadow: -1px -1px 1px darken($list-pressed-color, 50%) !important;
+  }
+
+  .x-list-item.x-item-pressed.x-list-item-tpl{
+    background-color: $list-pressed-color;
+    border-top-color: darken($list-pressed-color, 2%) !important;
   }
 }
 
@@ -279,7 +325,7 @@ body{
 \*------------------------------------*/
 
 .x-list-paging{
-  @include background-gradient(#dddddd,matte);
+  @include background-gradient(#dddddd,linear);
   .x-list-paging-msg{
     text-shadow:-1px -1px 1px #ffffff;
   }
@@ -287,8 +333,6 @@ body{
      @include background-gradient(#dddddd,recessed);
   }
 }
-
-
 
 
 
@@ -363,6 +407,19 @@ body{
 }
 
 
+/*------------------------------------*\
+    $MEDIA
+\*------------------------------------*/
+
+audio{
+  width: 100%;
+  height: 25%;
+  display: block;
+}
+
+video{
+  display: block;
+}
 
 
 /*------------------------------------*\
@@ -449,6 +506,4 @@ a.mediaplay:active{
   }
 
 }
-
-
 

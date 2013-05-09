@@ -93,6 +93,10 @@ Ext.define('Ext.carousel.Carousel', {
          * @private
          */
 
+        /**
+         * @cfg
+         * @inheritdoc
+         */
         baseCls: 'x-carousel',
 
         /**
@@ -110,6 +114,11 @@ Ext.define('Ext.carousel.Carousel', {
                 type: 'ease-out'
             }
         },
+
+        /**
+         * @cfg draggable
+         * @hide
+         */
 
         /**
          * @cfg {Boolean} indicator

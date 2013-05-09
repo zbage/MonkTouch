@@ -2,22 +2,11 @@
 //@require Ext.env.Browser
 
 /**
- * @aside guide environment_package
+ * Provides information about operating system environment.
  *
- * Provide useful information about the current operating system environment. Access the global instance stored in
- * `Ext.os`. Example:
- *
- *     if (Ext.os.is.Windows) {
- *         // Windows specific code here
- *     }
- *
- *     if (Ext.os.is.iOS) {
- *         // iPad, iPod, iPhone, etc.
- *     }
- *
- *     console.log("Version " + Ext.os.version);
- *
- * For a full list of supported values, refer to: {@link Ext.env.OS#is}
+ * Should not be manually instantiated unless for unit-testing.
+ * Access the global instance stored in {@link Ext.os} instead.
+ * @private
  */
 Ext.define('Ext.env.OS', {
 
@@ -27,6 +16,7 @@ Ext.define('Ext.env.OS', {
         names: {
             ios: 'iOS',
             android: 'Android',
+            windowsPhone: 'WindowsPhone',
             webos: 'webOS',
             blackberry: 'BlackBerry',
             rimTablet: 'RIMTablet',
@@ -34,16 +24,19 @@ Ext.define('Ext.env.OS', {
             win: 'Windows',
             linux: 'Linux',
             bada: 'Bada',
+            chrome: 'ChromeOS',
             other: 'Other'
         },
         prefixes: {
             ios: 'i(?:Pad|Phone|Pod)(?:.*)CPU(?: iPhone)? OS ',
             android: '(Android |HTC_|Silk/)', // Some HTC devices ship with an OSX userAgent by default,
                                         // so we need to add a direct check for HTC_
-            blackberry: 'BlackBerry(?:.*)Version\/',
+            windowsPhone: 'Windows Phone ',
+            blackberry: '(?:BlackBerry|BB)(?:.*)Version\/',
             rimTablet: 'RIM Tablet OS ',
             webos: '(?:webOS|hpwOS)\/',
-            bada: 'Bada\/'
+            bada: 'Bada\/',
+            chrome: 'CrOS '
         }
     },
 
@@ -125,13 +118,15 @@ Ext.define('Ext.env.OS', {
         return this;
     },
 
-    constructor: function(userAgent, platform) {
+    constructor: function(userAgent, platform, browserScope) {
         var statics = this.statics(),
             names = statics.names,
             prefixes = statics.prefixes,
             name,
             version = '',
-            i, prefix, match, item, is;
+            i, prefix, match, item, is, match1;
+
+        browserScope = browserScope || Ext.browser;
 
         is = this.is = function(name) {
             return this.is[name] === true;
@@ -145,12 +140,22 @@ Ext.define('Ext.env.OS', {
 
                 if (match) {
                     name = names[i];
+                    match1 = match[1];
 
                     // This is here because some HTC android devices show an OSX Snow Leopard userAgent by default.
                     // And the Kindle Fire doesn't have any indicator of Android as the OS in its User Agent
-                    if (match[1] && (match[1] == "HTC_" || match[1] == "Silk/")) {
+                    if (match1 && match1 == "HTC_") {
                         version = new Ext.Version("2.3");
-                    } else {
+                    }
+                    else if (match1 && match1 == "Silk/") {
+                        if (/Macintosh/i.test(userAgent)) {
+                            version = new Ext.Version("2.3");
+                        }
+                        else {
+                            version = new Ext.Version("4.0");
+                        }
+                    }
+                    else {
                         version = new Ext.Version(match[match.length - 1]);
                     }
 
@@ -168,7 +173,7 @@ Ext.define('Ext.env.OS', {
         this.version = version;
 
         if (platform) {
-            this.setFlag(platform);
+            this.setFlag(platform.replace(/ simulator$/i, ''));
         }
 
         this.setFlag(name);
@@ -193,6 +198,19 @@ Ext.define('Ext.env.OS', {
             this.setFlag('iPhone5');
         }
 
+
+        if (browserScope.is.Safari || browserScope.is.Silk) {
+            // Ext.browser.version.shortVersion == 501 is for debugging off device
+            if (this.is.Android2 || this.is.Android3 || browserScope.version.shortVersion == 501) {
+                browserScope.setFlag("AndroidStock");
+                browserScope.setFlag("AndroidStock2");
+            }
+            if (this.is.Android4) {
+                browserScope.setFlag("AndroidStock");
+                browserScope.setFlag("AndroidStock4");
+            }
+        }
+
         return this;
     }
 
@@ -213,7 +231,7 @@ Ext.define('Ext.env.OS', {
             Ext.deprecatePropertyValue(is, 'mac', true, "Ext.is.Mac is deprecated, please use Ext.os.is.MacOS instead");
         }
 
-        if (is.BlackBerry) {
+        if (is.Blackberry) {
             Ext.deprecatePropertyValue(is, 'Blackberry', true, "Ext.is.Blackberry is deprecated, please use Ext.os.is.BlackBerry instead");
         }
 
@@ -221,6 +239,28 @@ Ext.define('Ext.env.OS', {
     });
     //</deprecated>
 
+    /**
+     * @class Ext.os
+     * @extends Ext.env.OS
+     * @singleton
+     * Provides useful information about the current operating system environment.
+     *
+     * Example:
+     *
+     *     if (Ext.os.is.Windows) {
+     *         // Windows specific code here
+     *     }
+     *
+     *     if (Ext.os.is.iOS) {
+     *         // iPad, iPod, iPhone, etc.
+     *     }
+     *
+     *     console.log("Version " + Ext.os.version);
+     *
+     * For a full list of supported values, refer to the {@link #is} property/method.
+     *
+     * @aside guide environment_package
+     */
     Ext.os = osEnv = new this(userAgent, navigation.platform);
 
     osName = osEnv.name;
@@ -240,13 +280,13 @@ Ext.define('Ext.env.OS', {
         deviceType = 'Tablet';
     }
     else {
-        if (!osEnv.is.Android && !osEnv.is.iOS && /Windows|Linux|MacOS/.test(osName)) {
+        if (!osEnv.is.Android && !osEnv.is.iOS && !osEnv.is.WindowsPhone && /Windows|Linux|MacOS/.test(osName)) {
             deviceType = 'Desktop';
 
             // always set it to false when you are on a desktop
             Ext.browser.is.WebView = false;
         }
-        else if (osEnv.is.iPad || osEnv.is.Android3 || (osEnv.is.Android4 && userAgent.search(/mobile/i) == -1)) {
+        else if (osEnv.is.iPad || osEnv.is.RIMTablet || osEnv.is.Android3 || (osEnv.is.Android4 && userAgent.search(/mobile/i) == -1)) {
             deviceType = 'Tablet';
         }
         else {
@@ -254,6 +294,22 @@ Ext.define('Ext.env.OS', {
         }
     }
 
+    /**
+     * @property {String} deviceType
+     * The generic type of the current device.
+     *
+     * Possible values:
+     *
+     * - Phone
+     * - Tablet
+     * - Desktop
+     *
+     * For testing purposes the deviceType can be overridden by adding
+     * a deviceType parameter to the URL of the page, like so:
+     *
+     *     http://localhost/mypage.html?deviceType=Tablet
+     *
+     */
     osEnv.setFlag(deviceType, true);
     osEnv.deviceType = deviceType;
 
@@ -276,6 +332,6 @@ Ext.define('Ext.env.OS', {
      * @class Ext.is
      * Used to detect if the current browser supports a certain feature, and the type of the current browser.
      * @deprecated 2.0.0
-     * Please refer to the {@link Ext.env.Browser}, {@link Ext.env.OS} and {@link Ext.feature.has} classes instead.
+     * Please refer to the {@link Ext.browser}, {@link Ext.os} and {@link Ext.feature} classes instead.
      */
 });

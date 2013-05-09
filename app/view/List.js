@@ -1,5 +1,5 @@
 Ext.define('MonkTouch.view.List', {
-    extend : 'Ext.List',
+    extend : 'Ext.dataview.List',
     xtype  : 'listitems',
     config:{
       scrollable:true,
@@ -8,7 +8,7 @@ Ext.define('MonkTouch.view.List', {
       //styleHtmlContent:false
     },
     constructor : function(config) {
-     
+
         //var store = Ext.getStore(config.storeName);
          var me = this;
 
@@ -26,11 +26,11 @@ Ext.define('MonkTouch.view.List', {
          //console.log(store.getProxy());
          //store.setFilters(MonkTouch.FilterUtil.getFilters(config.filters));
          //proxy.setCacheKey(this.getId());
-    
+
         //me.setMasked(true);
 
         Ext.Viewport.setMasked({xtype:'loadmask'});
-      
+
     		Ext.apply(config, {
     	     store : store,
            plugins:[{
@@ -38,7 +38,7 @@ Ext.define('MonkTouch.view.List', {
             autoPaging:true,
             loadMoreText: 'MORE',
             noMoreRecordsText: ''
-           }]   
+           }]
     		});
 
         /*store.addBeforeListener('load',function(stre,records,success){

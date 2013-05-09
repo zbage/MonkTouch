@@ -8,20 +8,18 @@
  * documentation for more information. A typical configuration object for the line series could be:
  *
  *     @example preview
- *     var store = new Ext.data.JsonStore({
- *         fields: ['name', 'data1', 'data2', 'data3', 'data4', 'data5'],
- *         data: [
- *             {'name':'metric one', 'data1':10, 'data2':12, 'data3':14, 'data4':8, 'data5':13},
- *             {'name':'metric two', 'data1':7, 'data2':8, 'data3':16, 'data4':10, 'data5':3},
- *             {'name':'metric three', 'data1':5, 'data2':2, 'data3':14, 'data4':12, 'data5':7},
- *             {'name':'metric four', 'data1':2, 'data2':14, 'data3':6, 'data4':1, 'data5':23},
- *             {'name':'metric five', 'data1':27, 'data2':38, 'data3':36, 'data4':13, 'data5':33}
- *         ]
- *     });
- *
  *     var lineChart = new Ext.chart.CartesianChart({
  *         animate: true,
- *         store: store,
+ *         store: {
+ *           fields: ['name', 'data1', 'data2', 'data3', 'data4', 'data5'],
+ *           data: [
+ *               {'name':'metric one', 'data1':10, 'data2':12, 'data3':14, 'data4':8, 'data5':13},
+ *               {'name':'metric two', 'data1':7, 'data2':8, 'data3':16, 'data4':10, 'data5':3},
+ *               {'name':'metric three', 'data1':5, 'data2':2, 'data3':14, 'data4':12, 'data5':7},
+ *               {'name':'metric four', 'data1':2, 'data2':14, 'data3':6, 'data4':1, 'data5':23},
+ *               {'name':'metric five', 'data1':27, 'data2':38, 'data3':36, 'data4':13, 'data5':33}
+ *           ]
+ *         },
  *         axes: [{
  *             type: 'numeric',
  *             position: 'left',
@@ -124,6 +122,28 @@ Ext.define('Ext.chart.series.Line', {
          */
         smooth: false,
 
+        /**
+         * @cfg {Boolean} step
+         * If set to `true`, the line uses steps instead of straight lines to connect the dots.
+         * It is ignored if `smooth` is true.
+         */
+        step: false,
+
+        /**
+         * @cfg {Boolean} fill
+         * If set to `true`, the area underneath the line is filled with the color defined as follows, listed by priority:
+         * - The color that is configured for this series ({@link Ext.chart.series.Series#colors}).
+         * - The color that is configured for this chart ({@link Ext.chart.AbstractChart#colors}).
+         * - The fill color that is set in the {@link #style} config.
+         * - The stroke color that is set in the {@link #style} config, or the same color as the line.
+         *
+         * Note: Do not confuse `series.config.fill` (which is a boolean) with `series.style.fill' (which is an alias
+         * for the `fillStyle` property and contains a color). For compatibility with previous versions of the API,
+         * if `config.fill` is undefined but a `style.fill' color is provided, `config.fill` is considered true.
+         * So the default value below must be undefined, not false.
+         */
+         fill: undefined,
+
         aggregator: { strategy: 'double' }
     },
 
@@ -137,5 +157,45 @@ Ext.define('Ext.chart.series.Line', {
      * transforms. Expressed as a multiple of the viewport length, e.g. 1 will make the buffer on
      * each side equal to the length of the visible axis viewport.
      */
-    overflowBuffer: 1
+    overflowBuffer: 1,
+
+    /**
+     * @private Override {@link Ext.chart.series.Series#getDefaultSpriteConfig}
+     */
+    getDefaultSpriteConfig: function () {
+        var me = this,
+            parentConfig = me.callSuper(arguments),
+            style = me.getStyle(),
+            fillArea = false;
+
+        if (typeof me.config.fill != 'undefined') {
+            // If config.fill is present but there is no fillStyle, then use the
+            // strokeStyle to fill (and paint the area the same color as the line).
+            if (me.config.fill) {
+                fillArea = true;
+                if (typeof style.fillStyle == 'undefined') {
+                    style.fillStyle = style.strokeStyle;
+                }
+            }
+        } else {
+            // For compatibility with previous versions of the API, if config.fill
+            // is undefined but style.fillStyle is provided, we fill the area.
+            if (style.fillStyle) {
+                fillArea = true;
+            }
+        }
+
+        // If we don't fill, then delete the fillStyle because that's what is used by
+        // the Line sprite to fill below the line.
+        if (!fillArea) {
+            delete style.fillStyle;
+        }
+
+        return Ext.apply(parentConfig || {}, {
+            fillArea: fillArea,
+            step: me.config.step,
+            smooth: me.config.smooth
+        });
+    }
+
 });
