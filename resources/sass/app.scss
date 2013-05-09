@@ -51,6 +51,8 @@ $message-box-border-color: #384855;
 $message-box-text-color: #384855;
 $message-box-action-button-text-color: #ffffff;
 $message-box-action-button-color: #384855;
+$message-box-button-text-color: #ffffff;
+$message-box-button-color: #555555;
 $message-box-background-color: #ffffff;
 
 
@@ -352,6 +354,11 @@ body{
 .x-toolbar.x-msgbox-buttons .x-button.x-button-action{
   color: $message-box-action-button-text-color;
   @include background-gradient( $message-box-action-button-color,matte );
+}
+
+.x-toolbar.x-msgbox-buttons .x-button.x-button-normal{
+  color: $message-box-button-text-color;
+  @include background-gradient( $message-box-button-color,matte );
 }
 
 .x-panel.x-floating, .x-msgbox{
