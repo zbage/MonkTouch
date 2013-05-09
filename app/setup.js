@@ -1,7 +1,7 @@
 Ext.define('MonkTouch.setup',{
     singleton: true, //don't worry about this.
     activeTab:0, //initial tab for application to show
-    basePath:'http://randlett.net',
+    basePath:'',
     tabs:[
 
         {
