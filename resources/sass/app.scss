@@ -117,14 +117,15 @@ $textshadow: 1px 1px 1px #fff;
 @include icon("doc", "F");
 @include icon("info", "i");
 @include icon("list", "l");
-@include icon("audio","f");
-@include icon("compass", "G");
+@include icon("audio",">");
+@include icon("globe", "G");
 @include icon("photo", "P");
 @include icon("time", "t");
 @include icon("home", "H");
 @include icon("locate", "@");
 @include icon("video", "V");
 @include icon("mail", "M");
+@include icon("member", "U");
 
 
 

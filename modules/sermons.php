@@ -1,6 +1,6 @@
-<? require($_SERVER["DOCUMENT_ROOT"]."/monkcms.php"); 
+<? require($_SERVER["DOCUMENT_ROOT"]."/monkcms.php");
 
-$outarray; 
+$outarray;
 $nodes;
 $json;
 
@@ -61,21 +61,21 @@ if($filters != null){
               $offset = $value;
               break;
 
-      }       
+      }
   }
 }
 
-$string = getContent(  
+$string = getContent(
     "sermons",
     "display:list",
-    "order:".$order, 
+    "order:".$order,
     "find_category:".$category,
     "find_series:".$series,
     "find_group:".$group,
     "hide_series:".$hideseries,
     "hide_cateogory:".$hidecategory,
-    "hide_group:".$hideseries, 
-    "howmany:".$howmany, 
+    "hide_group:".$hideseries,
+    "howmany:".$howmany,
     "offset:".$offset,
     "find_preacher:".$preacher,
     "find_tag:".$tags,
@@ -117,26 +117,26 @@ $string = getContent(
     "show:__tags__",
     "show:||",
     "show:__notes__",
-    "show:~~",
+    "show:~~~~",
     "noecho"
-  ); 
+  );
 
    //echo($string);
 
-  $prearray = explode("~~",$string);
+  $prearray = explode("~~~~",$string);
 
-  for ($i=0; $i <count($prearray)-1; $i++) { 
+  for ($i=0; $i <count($prearray)-1; $i++) {
      $outarray[$i] = explode("||",$prearray[$i]);
   }
 
    /* function getAudio($url){
-        $a = preg_match('@(url=http?://([-\w\.]+)+(:\d+)?(/([\w/_\.]*(\S+(mp3|aac|wav|m4a))?)?)?)@', $url,$matches); 
+        $a = preg_match('@(url=http?://([-\w\.]+)+(:\d+)?(/([\w/_\.]*(\S+(mp3|aac|wav|m4a))?)?)?)@', $url,$matches);
     $audio = str_replace("url=","",$matches[0]);
-    return $audio; 
+    return $audio;
     }
 
     function getVideo($url){
-         $v = preg_match('@(url=http?://([-\w\.]+)+(:\d+)?(/([\w/_\.]*(\S+(mov|mp4|m4v))?)?)?)@', $url,$matches); 
+         $v = preg_match('@(url=http?://([-\w\.]+)+(:\d+)?(/([\w/_\.]*(\S+(mov|mp4|m4v))?)?)?)@', $url,$matches);
        $video = str_replace("url=","",$matches[0]);
        return $video;
     }*/
@@ -172,7 +172,7 @@ $string = getContent(
             type => $type,
             media_id => $media_id,
             code => $value[9]
-        ), 
+        ),
         thmb => $value[10],
         text => $value[11],
         category => $value[12],
@@ -185,11 +185,11 @@ $string = getContent(
         );
         $i++;
   }
-  
-  $totalpossible = getContent(  
+
+  $totalpossible = getContent(
     "sermons",
     "display:list",
-    "order:".$order, 
+    "order:".$order,
     "find_category:".$category,
     "find_series:".$series,
     "find_group:".$group,
@@ -198,14 +198,14 @@ $string = getContent(
     "find_author:".$author,
     "find_tag:".$tags,
     "hide_series:".$hideseries,
-    "hide_category:".$hidecategory, 
-    "hide_group:".$hidegroup, 
+    "hide_category:".$hidecategory,
+    "hide_group:".$hidegroup,
     "before_show:__totalpossible__",
     "noecho"
-  ); 
+  );
 
 
-  $output = array( 
+  $output = array(
     items => $nodes,
     total => intval($totalpossible)
   );
@@ -213,7 +213,7 @@ $string = getContent(
   //$output = array("items" => $nodes);
 
   $json = json_encode($output);
-  //print_r($articles); 
+  //print_r($articles);
 
    $callback = $_REQUEST['callback'];
 
@@ -225,7 +225,7 @@ $string = getContent(
      }else{
          header('Content-type: application/json');
          //echo "no-jibber";
-         echo $json; 
+         echo $json;
      }
 
 ?>

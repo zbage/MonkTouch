@@ -150,7 +150,7 @@ Ext.define('MonkTouch.controller.TabPanel',{
         }]);
       }
     }else if(config.view === 'link'){
-      Ext.Msg.confirm("Confirmation", "Do you want to leave the site?", function(e){
+      Ext.Msg.confirm("Leaving the mobile view", "Are you sure?", function(e){
         if(e === 'yes'){
           var url = config.filters.href;
           if(config.title.toLowerCase() === "home" || config.title.toLowerCase() === "site" || url === "/"){

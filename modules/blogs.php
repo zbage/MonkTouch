@@ -1,6 +1,6 @@
-<? require($_SERVER["DOCUMENT_ROOT"]."/monkcms.php"); 
+<? require($_SERVER["DOCUMENT_ROOT"]."/monkcms.php");
 
-$outarray; 
+$outarray;
 $nodes;
 $json;
 $output;
@@ -53,57 +53,57 @@ foreach($filters as $key=>$value){
         case 'start':
               $offset = $value;
               break;
-    }       
+    }
 }
 }
 
 
-$string = getContent(  
-		"blog",
-    "display:list",
-    "order:".$order,
-    "name:".$blogname,
-    "find_category:".$category,
-    "find_group:".$group,
-    "hide_group:".$group,
-    "howmany:".$howmany,
-    "offset:".$offset, 
-    "find_author:".$author,
-    "find_authors:".$authors,
-    "find_tag:".$tags,  
-		"show_postlist:__blogposttitle__",
-		"show_postlist:||",
-		"show_postlist:__blogsummary__",
-		"show_postlist:||",
-		"show_postlist:__preview limit='200'__",
-		"show_postlist:||",
-		"show_postlist:__blogauthor__",
-		"show_postlist:||",
-		"show_postlist:__blogpostdate format='M d Y'__",
-		"show_postlist:||",
-		"show_postlist:__blogtext__",
-		"show_postlist:||",
-		"show_postlist:__blogpostslug__",
-		"show_postlist:||",
-		"show_postlist:__blogpostpermalink__",
-		"show_postlist:||",
-		"show_postlist:__imageurl__",
-		"show_postlist:~~",
-		"noecho"
-	); 
-	 
+$string = getContent(
+	"blog",
+	"display:list",
+	"order:".$order,
+	"name:".$blogname,
+	"find_category:".$category,
+	"find_group:".$group,
+	"hide_group:".$group,
+	"howmany:".$howmany,
+	"offset:".$offset,
+	"find_author:".$author,
+	"find_authors:".$authors,
+	"find_tag:".$tags,
+	"show_postlist:__blogposttitle__",
+	"show_postlist:||",
+	"show_postlist:__blogsummary__",
+	"show_postlist:||",
+	"show_postlist:__preview limit='200'__",
+	"show_postlist:||",
+	"show_postlist:__blogauthor__",
+	"show_postlist:||",
+	"show_postlist:__blogpostdate format='M d Y'__",
+	"show_postlist:||",
+	"show_postlist:__blogtext__",
+	"show_postlist:||",
+	"show_postlist:__blogpostslug__",
+	"show_postlist:||",
+	"show_postlist:__blogpostpermalink__",
+	"show_postlist:||",
+	"show_postlist:__imageurl__",
+	"show_postlist:~~~~",
+	"noecho"
+	);
+
    //echo($string);
-	
-	$prearray = explode("~~",$string);
-	
-	for ($i=0; $i <count($prearray)-1; $i++) { 
-    	
+
+	$prearray = explode("~~~~",$string);
+
+	for ($i=0; $i <count($prearray)-1; $i++) {
+
 		 $outarray[$i] = explode("||",$prearray[$i]);
     }
       $i = 0;
 	foreach ($outarray as $key => $value) {
 	     $nodes[$i] = array(
-	         
+
 		    title => $value[0],
 		    summary => $value[1],
 		    preview => $value[2],
@@ -116,8 +116,8 @@ $string = getContent(
 		    );
 		    $i++;
 	}
-	
-  $totalpossible = getContent(  
+
+  $totalpossible = getContent(
     "blog",
     "display:list",
     "order:".$order,
@@ -127,29 +127,29 @@ $string = getContent(
     "hide_group:".$group,
     "find_author:".$author,
     "find_authors:".$authors,
-    "find_tag:".$tags, 
+    "find_tag:".$tags,
     "before_show_postlist:__totalpossible__",
     "noecho"
-  ); 
-  
-  
-  $output = array( 
+  );
+
+
+  $output = array(
     items => $nodes,
     total => intval($totalpossible)
   );
-	
+
 	//$output = array("items" => $nodes);
-	
+
 	$json = json_encode($output);
-	//print_r($articles); 
-	
+	//print_r($articles);
+
 	 $callback = $_REQUEST['callback'];
-	 
+
 	 if($callback){
 	     header('Content-type: text/javascript');
 	     echo $callback . '(' . $json . ');';
 	 }else{
 	     header('Content-type: application/json');
-	     echo $json; 
+	     echo $json;
 	 }
 ?>

@@ -1,6 +1,6 @@
-<? require($_SERVER["DOCUMENT_ROOT"]."/monkcms.php"); 
+<? require($_SERVER["DOCUMENT_ROOT"]."/monkcms.php");
 
-$outarray; 
+$outarray;
 $nodes;
 $json;
 $output;
@@ -19,16 +19,16 @@ if($filters != null){
             $offset = $value;
             break;
 
-    }       
+    }
   }
 }
 
 
-$string = getContent(  
+$string = getContent(
     "gallery",
     "display:list",
     "order:recent",
-    "howmany:".$howmany, 
+    "howmany:".$howmany,
     "show_galleries:__title__",
     "show_galleries:||",
     "show_galleries:__promoimageurl width='50' height='50'__",
@@ -40,19 +40,19 @@ $string = getContent(
     "show_galleries:__numberofimages__",
     "show_galleries:||",
     "show_galleries:__galleryurl__",
-    "show_galleries:~~",
+    "show_galleries:~~~~",
     "noecho"
-  ); 
+  );
 
-  $prearray = explode("~~",$string);
+  $prearray = explode("~~~~",$string);
 
-  for ($i=0; $i <count($prearray)-1; $i++) { 
+  for ($i=0; $i <count($prearray)-1; $i++) {
      $outarray[$i] = explode("||",$prearray[$i]);
   }
-  $i = 0; 
+  $i = 0;
 
-  foreach ($outarray as $key => $value) { 
-      $nodes[$i] = array(            
+  foreach ($outarray as $key => $value) {
+      $nodes[$i] = array(
         title => $value[0],
         thmb => $value[1],
         preview => $value[2],
@@ -60,12 +60,12 @@ $string = getContent(
         number => $value[4],
         slug => str_replace("/","",$value[5])
       );
-      $i++; 
+      $i++;
   }
 
   $totalpossible = count($prearray);
 
-  $output = array( 
+  $output = array(
     items => $nodes,
     total => intval($totalpossible)
   );
@@ -73,7 +73,7 @@ $string = getContent(
   //$output = array("items" => $nodes);
 
   $json = json_encode($output);
-  //print_r($articles); 
+  //print_r($articles);
 
    $callback = $_REQUEST['callback'];
 
@@ -82,7 +82,7 @@ $string = getContent(
        echo $callback . '(' . $json . ');';
    }else{
        header('Content-type: application/json');
-       echo $json; 
+       echo $json;
    }
 
 ?>

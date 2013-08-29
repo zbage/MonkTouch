@@ -1,6 +1,6 @@
-<? require($_SERVER["DOCUMENT_ROOT"]."/monkcms.php"); 
+<? require($_SERVER["DOCUMENT_ROOT"]."/monkcms.php");
 
-$outarray; 
+$outarray;
 $nodes;
 $category;
 $group;
@@ -62,69 +62,69 @@ foreach($filters as $key=>$value){
         case 'start':
               $offset = $value;
               break;
-    }       
+    }
 }
 }
- 
 
-$string = getContent(  
-		"event",
-    "display:list",
-    "find_category:".$category,
-    "find_group:".$group,
-    "howmany:".$howmany, 
-    "offset:".$offset,
-    "order:".$order,
-    "hide_category:".$hidecategory,
-    "hide_group:".$hidegroup,
-    "find_location:".$location,
-    "find_state:".$state,
-    "find_near:".$findnear,
-    "radius:".$radius,
-    "howmanydays:".$howmanydays,
-		"show:__title__",
-		"show:||",
-		"show:__image__",
-		"show:||",
-		"show:__preview limit='200'__",
-		"show:||",
-	  "show:__description__",
-    "show:||",
-		"show:__coordname__",
-		"show:||",
-		"show:__coordemail__",
-		"show:||",
-		"show:__coordphone__",
-		"show:||",
-		"show:__eventstart format='M d Y'__",
-		"show:||",
-		"show:__eventstartTwo format='M'__",
-		"show:||",
-		"show:__eventstartThree format='d'__",
-		"show:||",
-		"show:__eventend format='M d Y'__",
-		"show:||",
-		"show:__eventtimes__",
-		"show:||",
-		"show:__googlemap__",
-		"show:||",
-		"show:__fulladdress__",
-		"show:||",
-		"show:__location__",
-		"show:||",
-		"show:__slug__",
-		"show:||",
-		"show:__registration linktext='Register'__",
-		"show:~~",
-		"noecho"
-	); 
-	 
+
+$string = getContent(
+	"event",
+	"display:list",
+	"find_category:".$category,
+	"find_group:".$group,
+	"howmany:".$howmany,
+	"offset:".$offset,
+	"order:".$order,
+	"hide_category:".$hidecategory,
+	"hide_group:".$hidegroup,
+	"find_location:".$location,
+	"find_state:".$state,
+	"find_near:".$findnear,
+	"radius:".$radius,
+	"howmanydays:".$howmanydays,
+	"show:__title__",
+	"show:||",
+	"show:__image__",
+	"show:||",
+	"show:__preview limit='200'__",
+	"show:||",
+	"show:__description__",
+	"show:||",
+	"show:__coordname__",
+	"show:||",
+	"show:__coordemail__",
+	"show:||",
+	"show:__coordphone__",
+	"show:||",
+	"show:__eventstart format='M d Y'__",
+	"show:||",
+	"show:__eventstartTwo format='M'__",
+	"show:||",
+	"show:__eventstartThree format='d'__",
+	"show:||",
+	"show:__eventend format='M d Y'__",
+	"show:||",
+	"show:__eventtimes__",
+	"show:||",
+	"show:__googlemap__",
+	"show:||",
+	"show:__fulladdress__",
+	"show:||",
+	"show:__location__",
+	"show:||",
+	"show:__slug__",
+	"show:||",
+	"show:__registration linktext='Register'__",
+	"show:~~~~",
+	"noecho"
+	);
+
    //echo($string);
-	
-	$prearray = explode("~~",$string);
-	
-	for ($i=0; $i <count($prearray)-1; $i++) { 
-    	
+
+	$prearray = explode("~~~~",$string);
+
+	for ($i=0; $i <count($prearray)-1; $i++) {
+
 		 $outarray[$i] = explode("||",$prearray[$i]);
     }
     //generate json structure
@@ -135,13 +135,13 @@ $string = getContent(
 		    image => $value[1],
 		    preview => $value[2],
 		    text => $value[3],
-		    date => array(  
+		    date => array(
 	               startDate => $value[7],
 	               month => $value[8],
 	               day => $value[9],
 	               end => $value[10],
 	               times => $value[11]
-	            ),    
+	            ),
 		    coord => array(
 		            name => $value[4],
 		            email => $value[5],
@@ -157,10 +157,10 @@ $string = getContent(
 		    );
 	    $i++;
 	}
-	
+
 	//$output = array("items" => $nodes);
-	
-	$totalpossible = getContent(  
+
+	$totalpossible = getContent(
 	  "event",
 	  "display:list",
 	  "find_category:".$category,
@@ -175,27 +175,27 @@ $string = getContent(
 	  "howmanydays:".$howmanydays,
 	  "before_show:__totalpossible__",
 	  "noecho"
-	); 
-	
-	
-	$output = array( 
+	);
+
+
+	$output = array(
 	  items => $nodes,
 	  total => intval($totalpossible)
 	);
-	
+
 	//$output = array("items" => $nodes);
-	
+
 	$json = json_encode($output);
-	//print_r($articles); 
-	
+	//print_r($articles);
+
 	 $callback = $_REQUEST['callback'];
-	 
+
 	 if($callback){
 	     header('Content-type: text/javascript');
 	     echo $callback . '(' . $json . ');';
 	 }else{
 	     header('Content-type: application/json');
-	     echo $json; 
+	     echo $json;
 	 }
-	
+
 ?>

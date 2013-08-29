@@ -1,87 +1,22 @@
 Ext.define('MonkTouch.setup',{
     singleton: true, //don't worry about this.
     activeTab:0, //initial tab for application to show
-    basePath:'',
+    basePath:'/mobile',
     tabs:[
-
-        {
-            title   : 'Media',
-            view   : 'navview',
-            iconCls : 'audio',
-            storeName   : 'sermons',
+	 	  {
+            title   : 'Welcome',
+            iconCls : 'globe',
+            view   : 'section',
+            storeName  : 'Section',
             filters : {
-    		      //hide_series:'job-an-audience-with-god'
-
+			       id:'mobile-welcome'
             },
             contentTpl:{
-              list: 'defaultList',
-              detail: 'embedVideoDetail'
-            },
-            xtype:'panel',
-            layout:'fit'
-        },
-        {
-            title   : 'Media2',
-            view   : 'navview',
-            iconCls : 'audio',
-            storeName   : 'Sermons',
-            filters : {
-    		      hide_series:'job-an-audience-with-god'
-            },
-            contentTpl:{
-              list: 'imageList',
-              detail: 'sermonDetail'
-            },
-            xtype:'panel',
-            layout:'fit'
-        },
-        {
-            title   : 'Articles',
-            iconCls : 'doc',
-            view   : 'navview',
-            storeName   : 'articles',
-            filters : {
-			       //series:'job-an-audience-with-god'
-            },
-            contentTpl:{
-              list: 'articleList',
-              detail: 'articleDetail'
+              detail: 'defaultDetail'
             },
             xtype:'panel',
             layout:'fit'
 
-        },
-        {
-            title   : 'Blogs',
-            iconCls : 'news',
-            view   : 'navview',
-            storeName   : 'Blogs',
-            filters : {
-              blogname:'blog-layout-1'
-			  //series:'job-an-audience-with-god'
-            },
-            contentTpl:{
-              list: 'defaultList',
-              detail: 'articleDetail'
-            },
-            xtype:'panel',
-            layout:'fit'
-
-        },
-        {
-            title   : 'Events',
-            iconCls : 'calendar',
-            view   : 'navview',
-            storeName   : 'Events',
-            filters : {
-			 //series:'job-an-audience-with-god'
-            },
-            contentTpl:{
-              list: 'eventList',
-              detail: 'eventDetail'
-            },
-            xtype:'panel',
-            layout:'fit'
         },
         {
             title   : 'Directions',
@@ -99,7 +34,55 @@ Ext.define('MonkTouch.setup',{
 
         },
         {
-            title   : 'Contact',
+            title   : 'Events',
+            iconCls : 'calendar',
+            view   : 'navview',
+            storeName   : 'Events',
+            filters : {
+					//series:'job-an-audience-with-god'
+            },
+            contentTpl:{
+              list: 'eventList',
+              detail: 'eventDetail'
+            },
+            xtype:'panel',
+            layout:'fit'
+        },
+        {
+            title   : 'Media',
+            view   : 'navview',
+            iconCls : 'audio',
+            storeName   : 'sermons',
+            filters : {
+    		      //hide_series:'job-an-audience-with-god'
+
+            },
+            contentTpl:{
+              list: 'defaultList',
+              detail: 'sermonDetail'
+            },
+            xtype:'panel',
+            layout:'fit'
+        },
+        {
+            title   : 'Blogs',
+            iconCls : 'news',
+            view   : 'navview',
+            storeName   : 'Blogs',
+            filters : {
+              blogname:'blog-layout-1'
+				  //series:'job-an-audience-with-god'
+            },
+            contentTpl:{
+              list: 'defaultList',
+              detail: 'articleDetail'
+            },
+            xtype:'panel',
+            layout:'fit'
+
+        },
+        {
+            title   : 'Contact Us',
             iconCls : 'mail',
             view   : 'section',
             storeName  : 'Section',
@@ -132,9 +115,44 @@ Ext.define('MonkTouch.setup',{
             iconCls : 'home',
             view   : 'link',
             filters : {
-              href:'http://www.monkdev.com'
+              href:'/'
             }
         }
+        /*
+        {
+            title   : 'Media2',
+            view   : 'navview',
+            iconCls : 'audio',
+            storeName   : 'Sermons',
+            filters : {
+    		      hide_series:'job-an-audience-with-god'
+            },
+            contentTpl:{
+              list: 'imageList',
+              detail: 'sermonDetail'
+            },
+            xtype:'panel',
+            layout:'fit'
+        },
+        */
+        /*
+        {
+            title   : 'Articles',
+            iconCls : 'doc',
+            view   : 'navview',
+            storeName   : 'articles',
+            filters : {
+			       //series:'job-an-audience-with-god'
+            },
+            contentTpl:{
+              list: 'articleList',
+              detail: 'articleDetail'
+            },
+            xtype:'panel',
+            layout:'fit'
+
+        },
+        */
     ],
     setActiveTab:function(idx){
         this.activeTab = idx;
