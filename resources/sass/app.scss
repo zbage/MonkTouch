@@ -510,6 +510,10 @@ a.mediaplay:active{
   p{
     font-size:1.1em;
   }
-
+  a{
+	  color:$title-bar-background-color;
+  }
 }
-
+.x-floating .x-toolbar-dark .x-title {
+	color: #333333;
+}
